@@ -5,6 +5,7 @@ import soa.util.Generate;
 public class Entity{
 
 	private String name;
+	private int lifePoints=100;
 	private int birthUST;
 	private int age;
 	_00Species race;
@@ -40,6 +41,14 @@ public class Entity{
 
 	public void setName(String n) {
 		name = n;
+	}
+	
+	public int getLifePoints(){
+		return lifePoints;
+	}
+	
+	public void setLifePoints(int i){
+		lifePoints = i;
 	}
 
 	
