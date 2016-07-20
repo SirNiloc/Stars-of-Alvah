@@ -1,4 +1,4 @@
-package soa.station;
+package soa.space.station;
 
 public class Station {
 

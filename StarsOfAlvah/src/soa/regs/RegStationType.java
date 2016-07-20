@@ -2,7 +2,7 @@ package soa.regs;
 
 import java.util.ArrayList;
 
-import soa.station.StationType;
+import soa.space.station.StationType;
 
 public class RegStationType {
 

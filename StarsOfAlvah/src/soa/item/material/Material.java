@@ -1,4 +1,4 @@
-package soa.material;
+package soa.item.material;
 
 public class Material {
 

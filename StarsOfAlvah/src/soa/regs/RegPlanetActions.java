@@ -2,7 +2,7 @@ package soa.regs;
 
 import java.util.ArrayList;
 
-import soa.planet.PlanetAction;
+import soa.space.planet.PlanetAction;
 
 public class RegPlanetActions {
 

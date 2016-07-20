@@ -1,4 +1,4 @@
-package soa.player;
+package soa.game.player;
 
 import soa.entity.IntelligentEntity;
 import soa.entity._00Species;
@@ -9,7 +9,6 @@ public class Player extends IntelligentEntity{
 		super(s, age, race);
 	}
 
-	
 	public String toString(){
 		_00Species race = this.getRace();
 		return "Name: "+this.getName()+"\n"+
@@ -26,7 +25,6 @@ public class Player extends IntelligentEntity{
 				"Mind: "+race.getMind()+"\n"+
 				"Spirit: "+race.getSpirit()+"\n";
 	}
-	
 	
 	//TODO Add Characteristics
 }

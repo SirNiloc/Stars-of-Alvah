@@ -2,7 +2,7 @@ package soa.regs;
 
 import java.util.ArrayList;
 
-import soa.player.PlayerSheet;
+import soa.game.player.PlayerSheet;
 
 public class RegPlayerSheets {
 

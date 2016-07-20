@@ -2,7 +2,7 @@ package soa.regs;
 
 import java.util.ArrayList;
 
-import soa.material.Material;
+import soa.item.material.Material;
 
 public class RegMaterial {
 

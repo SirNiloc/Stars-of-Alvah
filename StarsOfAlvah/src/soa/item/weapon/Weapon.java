@@ -1,4 +1,4 @@
-package soa.weapon;
+package soa.item.weapon;
 
 public class Weapon {
 

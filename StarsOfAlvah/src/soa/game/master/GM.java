@@ -1,4 +1,4 @@
-package soa.game_master;
+package soa.game.master;
 
 public class GM {
 

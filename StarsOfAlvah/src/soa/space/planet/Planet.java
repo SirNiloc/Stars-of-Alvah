@@ -1,4 +1,4 @@
-package soa.planet;
+package soa.space.planet;
 
 public class Planet {
 

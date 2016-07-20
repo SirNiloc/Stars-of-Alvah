@@ -1,4 +1,4 @@
-package soa.ship;
+package soa.space.ship;
 
 public class Ship {
 
