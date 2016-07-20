@@ -9,9 +9,9 @@ public class PlantCraft extends Plant{
 	int durability;
 	
 	
-	public PlantCraft(String n, int t, boolean d, int ga, int gt,int str,int w,int dura) {
-		super(n, t, d, ga, gt);
-		strength = str;
+	public PlantCraft(String name, int tier, boolean destroyOnHarvest, int growAmmount, int growTime,int strength,int w,int dura) {
+		super(name, tier, destroyOnHarvest, growAmmount, growTime);
+		this.strength = strength;
 		weight = w;
 		durability = dura;
 	}

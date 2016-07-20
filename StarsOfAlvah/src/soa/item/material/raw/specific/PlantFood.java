@@ -8,8 +8,8 @@ public class PlantFood extends Plant{
 	int flavor;
 	
 	
-	public PlantFood(String n, int t,boolean d,int ga,int gt, int nu, int f) {
-		super(n, t,d,ga, gt);
+	public PlantFood(String name, int tier,boolean d,int ga,int gt, int nu, int f) {
+		super(name,tier,d,ga, gt);
 		nurishment = nu;
 		flavor = f;
 	}
