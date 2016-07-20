@@ -11,5 +11,12 @@ public class Plant extends MaterialRaw{
 		growTime = gt;
 	}
 
+	public int getGA(){
+		return growAmmount;
+	}
+	
+	public int getGT(){
+		return growTime;
+	}
 
 }

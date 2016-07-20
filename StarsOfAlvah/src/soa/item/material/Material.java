@@ -23,6 +23,6 @@ public class Material {
 	}
 	
 	public static int getPoints(int t){
-		return t*t*10;
+		return t*100;
 	}
 }

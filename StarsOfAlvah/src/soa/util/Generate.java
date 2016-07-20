@@ -6,6 +6,7 @@ import soa.item.material.raw.specific.MineralGem;
 import soa.item.material.raw.specific.MineralMetal;
 import soa.item.material.raw.specific.PlantCraft;
 import soa.item.material.raw.specific.PlantFood;
+import soa.item.material.raw.specific.PlantMedical;
 import soa.regs.RegMaterial;
 import soa.regs.RegRace;
 
@@ -102,7 +103,28 @@ public class Generate {
 		return plant;
 		
 	}
-	//TODO
+	
+	public static PlantMedical plantMedical(String name, int tier){
+		int points = Material.getPoints(tier);
+		
+		int ammount = randRange(points/4,points);
+		int time = (points-ammount);
+
+		int hi = randRange(0,points/3);
+		int si = randRange(0,points/3);
+		
+		int sr = randRange(0,points-(hi+si));
+		int hr = randRange(0,points-(hi+si+sr));
+		
+		int duration = points-(hi+si+sr+hr);
+		
+		
+		PlantMedical plant = new PlantMedical(name, tier, false, ammount, time, hi, hr, si, sr, duration);
+		RegMaterial.registerMaterial(plant);
+		
+		return plant;
+		
+	}
 	
 	//Material Raw
 }

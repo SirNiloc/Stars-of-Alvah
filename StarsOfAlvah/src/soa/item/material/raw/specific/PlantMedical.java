@@ -4,13 +4,13 @@ import soa.item.material.raw.Plant;
 
 public class PlantMedical extends Plant{
 
-	int healInstant;
-	int healRegen;
+	private int healInstant;
+	private int healRegen;
 	
-	int spiritInstant;
-	int spiritRegen;
+	private int spiritInstant;
+	private int spiritRegen;
 	
-	int duration;
+	private int duration;
 	
 	public PlantMedical(String n, int t,boolean de,int ga,int gt, int healI,int healR,int spiritI,int spiritR,int d) {
 		super(n, t,de,ga,gt);
@@ -23,6 +23,38 @@ public class PlantMedical extends Plant{
 		
 		duration = d;
 		
+	}
+	
+	public String toString(){
+		return "Name: "+getName()+"\n"+
+				"Tier: "+getTier()+"\n"+
+				"Heal: "+getInstantHeal()+"\n"+
+				"Magic: "+getInstantMagic()+"\n"+
+				"Heal Regen: "+getRegenH()+"\n"+				
+				"Magic Regen: "+getRegenM()+"\n"+
+				"Regen Duration: "+getRegenDuration()+"\n"+
+				"Grow Time: "+getGT()+"\n"
+				+"Yeild: "+getGA();
+	}
+
+	private int getRegenDuration() {
+		return duration;
+	}
+
+	private int getRegenM() {
+		return spiritRegen;
+	}
+
+	private int getRegenH() {
+		return healRegen;
+	}
+
+	private int getInstantMagic() {
+		return spiritInstant;
+	}
+
+	private int getInstantHeal() {
+		return healInstant;
 	}
 
 }

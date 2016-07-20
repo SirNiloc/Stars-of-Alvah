@@ -11,4 +11,16 @@ public class MineralMetal extends Mineral{
 		conductivity = conduct;
 	}
 
+	public String toString(){
+		return "Name: "+getName()+"\n"+
+				"Tier: "+getTier()+"\n"+
+				"Strength: "+getStrength()+"\n"+
+				"Magic: "+getMagic()+"\n"+
+				"Conductivity: "+getConductivity()+"\n"+
+				"Color: "+getRed()+" "+getRed()+" "+getBlue();
+	}
+
+	private int getConductivity() {
+		return conductivity;
+	}
 }

@@ -15,5 +15,27 @@ public class PlantCraft extends Plant{
 		weight = w;
 		durability = dura;
 	}
+	
+	public String toString(){
+		return "Name: "+getName()+"\n"+
+				"Tier: "+getTier()+"\n"+
+				"Strength: "+getStrength()+"\n"+
+				"Weight: "+getWeight()+"\n"+
+				"Durability: "+getDurability()+"\n"+
+				"Grow Time: "+getGT()+"\n"
+				+"Yeild: "+getGA();
+	}
+
+	private int getDurability() {
+		return durability;
+	}
+
+	private int getWeight() {
+		return weight;
+	}
+
+	private int getStrength() {
+		return strength;
+	}
 
 }

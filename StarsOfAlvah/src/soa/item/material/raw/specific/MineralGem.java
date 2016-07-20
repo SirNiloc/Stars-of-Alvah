@@ -10,6 +10,13 @@ public class MineralGem extends Mineral{
 		
 	}
 
+	public String toString(){
+		return "Name: "+getName()+"\n"+
+				"Tier: "+getTier()+"\n"+
+				"Strength: "+getStrength()+"\n"+
+				"Magic: "+getMagic()+"\n"+
+				"Color: "+getRed()+" "+getRed()+" "+getBlue()+" "+getAlpha();
+	}
 	
 	
 }

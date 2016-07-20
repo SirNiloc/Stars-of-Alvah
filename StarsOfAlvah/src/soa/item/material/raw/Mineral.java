@@ -19,5 +19,28 @@ public class Mineral extends MaterialRaw{
 		blue = b;
 		alpha = a;
 	}
+	
+	public int getStrength(){
+		return strength;
+	}
+	
+	public int getMagic(){
+		return magic;
+	}
+	
+	public int getAlpha(){
+		return alpha;
+	}
+	
+	public int getRed(){
+		return red;
+	}
+	public int getGreen(){
+		return green;
+	}
+	
+	public int getBlue(){
+		return blue;
+	}
 
 }
