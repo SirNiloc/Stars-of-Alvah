@@ -2,9 +2,14 @@ package soa.item.material.raw;
 
 public class Plant extends MaterialRaw{
 
-	public Plant(String n, int t) {
-		super(n, t);
-		// TODO Auto-generated constructor stub
+	int growAmmount;
+	int growTime;
+	
+	public Plant(String n, int t,boolean d, int ga, int gt) {
+		super(n, t,d);
+		growAmmount = ga;
+		growTime = gt;
 	}
+
 
 }
