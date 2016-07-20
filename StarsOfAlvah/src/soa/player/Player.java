@@ -1,52 +1,16 @@
 package soa.player;
 
-import soa.entity.Intelligent;
+import soa.entity.IntelligentEntity;
+import soa.entity._00Species;
 
-public class Player implements Intelligent{
+public class Player extends IntelligentEntity{
 
-	String name;
-	int birthUST;
-	int age;
-	@Override
-	public void gainExp(int e) {
-		// TODO Auto-generated method stub
-		
+	public Player(String n, int a, _00Species r) {
+		super(n, a, r);
 	}
-	@Override
-	public void checkEXP() {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public boolean levelUp() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
-	public void setLevel(int l) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void setEXP(int e) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public int getLevel() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public int getEXP() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public int getComplexity() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
+	
+	
 	
 	
 	//TODO Add Characteristics
