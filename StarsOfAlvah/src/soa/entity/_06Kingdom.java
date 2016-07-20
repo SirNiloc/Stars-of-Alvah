@@ -49,11 +49,11 @@ public class _06Kingdom extends _07Domain{
 		addSpirit(s);
 	}
 	
-	public String getKingdom(){
+	public String getKingdom(String spec){
 		if(kingdom == 1)return "Animalia";
 		else if(kingdom == 2)return "Bacteria";
 		else if(kingdom == 3)return "Fungi";
 		else if(kingdom == 4)return "Plantae";
-		else return this.getDomain();
+		else return this.getDomain(spec);
 	}
 }

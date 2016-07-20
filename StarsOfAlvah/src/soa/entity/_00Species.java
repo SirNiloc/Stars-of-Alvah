@@ -7,18 +7,18 @@ public class _00Species extends _01Genus{
 	
 
 	public _00Species(String spec, int clas) {
-		super(clas);
+		super(spec,clas);
 		setSpecies(spec);
 		setGenus();
 	}
 	public _00Species(String spec,int clas, String family) {
-		super(clas,family);
+		super(spec,clas,family);
 		setSpecies(spec);
 		setGenus();
 	}
 
 	public _00Species(String spec,int clas, String family, String genus) {
-		super(clas,family);
+		super(spec,clas,family);
 		setGenus(genus);
 		setSpecies(spec);
 	}

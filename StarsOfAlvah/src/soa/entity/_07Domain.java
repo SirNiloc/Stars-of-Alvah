@@ -56,9 +56,9 @@ public class _07Domain {
 		return levelSpirit;
 	}
 	
-	public String getDomain(){
+	public String getDomain(String spec){
 		if(domain == 1)return "Eukarya";
 		else if(domain == 2)return "Bacteria";
-		else return "UNKNOWN";
+		else return spec;
 	}
 }

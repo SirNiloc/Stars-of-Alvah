@@ -10,8 +10,8 @@ public class IntelligentEntity extends Entity  implements Intelligent{
 	
 
 	
-	public IntelligentEntity(String n, int a, _00Species r) {
-		super(n, a, r);
+	public IntelligentEntity(String s, int a, _00Species r) {
+		super(s, a, r);
 	}
 
 	@Override
@@ -74,6 +74,8 @@ public class IntelligentEntity extends Entity  implements Intelligent{
 	public void setPoints(int p) {
 		points = p;
 	}
+
+
 
 
 }

@@ -182,7 +182,7 @@ public class _04Class extends _05Division{
 		addSpirit(s);
 	}
 	
-	public String getClasss(){
+	public String getClasss(String spec){
 		if(clas == 1)return "Mammalia";
 		else if(clas == 2)return "Aves";
 		else if(clas == 3)return "Reptilia";
@@ -210,7 +210,7 @@ public class _04Class extends _05Division{
 		else if(clas == 25)return "Gammaproteobacteria";
 		else if(clas == 26)return "Deltaproteobacteria";
 		else if(clas == 27)return "Epsilonproteobacteria";
-		else return this.getDivision();
+		else return this.getDivision(spec);
 	}
 
 }

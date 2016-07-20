@@ -68,7 +68,7 @@ public class _05Division extends _06Kingdom{
 		addSpirit(s);
 	}
 	
-	public String getDivision(){
+	public String getDivision(String spec){
 		if(division == 1)return "Chordata";
 		else if(division == 2)return "Arthropoda";
 		else if(division == 3)return "Echinodermata";
@@ -76,7 +76,7 @@ public class _05Division extends _06Kingdom{
 		else if(division == 5)return "Tracheophyta";
 		else if(division == 6)return "Basidiomycota";
 		else if(division == 7)return "Proteobacteria";
-		else return this.getKingdom();
+		else return this.getKingdom(spec);
 	}
 
 }

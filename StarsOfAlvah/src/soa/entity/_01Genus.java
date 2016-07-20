@@ -5,22 +5,24 @@ public class _01Genus extends _02Family{
 
 
 
-	private String genus = "UNKNOWN";
+	private String genus = "GENUS";
 	
-	public _01Genus(int i) {
-		super(i);
+	public _01Genus(String spec,int i) {
+		super(spec,i);
+		setGenus();
 	}
-	public _01Genus(int i, String s) {
-		super(i,s);
+	public _01Genus(String spec,int i, String s) {
+		super(spec,i,s);
+		setGenus();
 	}
 	
-	public _01Genus(int i, String s,boolean noGenus) {
-		super(i,s);
+	public _01Genus(String spec,int i, String s,boolean noGenus) {
+		super(spec,i,s);
 		setGenus();
 	}
 
-	public _01Genus(int i, String s, String s2) {
-		super(i,s);
+	public _01Genus(String spec,int i, String s, String s2) {
+		super(spec,i,s);
 		setGenus(s2);
 	}
 	
