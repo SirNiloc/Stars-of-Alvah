@@ -1,4 +1,4 @@
-package soa.player;
+package soa.game.player;
 
 public class PlayerSheet {
 

@@ -2,7 +2,7 @@ package soa.regs;
 
 import java.util.ArrayList;
 
-import soa.planet.Planet;
+import soa.space.planet.Planet;
 
 public class RegPlanet {
 

@@ -2,7 +2,7 @@ package soa.regs;
 
 import java.util.ArrayList;
 
-import soa.ship.ShipType;
+import soa.space.ship.ShipType;
 
 public class RegShipType {
 
