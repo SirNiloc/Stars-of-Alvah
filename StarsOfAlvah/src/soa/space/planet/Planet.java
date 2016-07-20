@@ -3,7 +3,8 @@ package soa.space.planet;
 public class Planet {
 
 	String name = "EMPTY";
-	boolean inhabitable = false;
+	boolean inhabited = false;
+	int inhabitablity = 0; //0(Nope)-10(easy) 
 	String info = "EMPTY";
 	//TODO Add Characteristics
 	
@@ -11,7 +12,6 @@ public class Planet {
 	
 	public Planet(String n){
 		name = n;
-		
 		setPlanetInfo();
 	}
 	
@@ -20,13 +20,12 @@ public class Planet {
 	}
 
 	public void setPlanetInfo() {
-		// TODO Finish Info
 		info = "Name: "+name+"\n"+
-		"Supports Life: "+inhabitable+"\n";
+		"Inhabited: "+inhabited+"\n"+
+		"Inhabitablity: "+inhabitablity+"\n";
 	}
 	
 	public String getPlanetInfo() {
-		// TODO Auto-generated method stub
 		return info;
 	}
 }
