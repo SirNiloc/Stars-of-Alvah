@@ -4,9 +4,11 @@ import soa.entity.interfaces.Intelligent;
 
 public class IntelligentEntity extends Entity  implements Intelligent{
 
-	private int level = 0;
+	private int levelCore = 0;
 	private int exp = 0;
 	private int points = 0;
+	
+
 	
 	public IntelligentEntity(String n, int a, _00Species r) {
 		super(n, a, r);
@@ -26,22 +28,22 @@ public class IntelligentEntity extends Entity  implements Intelligent{
 
 	@Override
 	public void levelUp(int e) {
-		setLevel(level+1);
+		setLevel(levelCore+1);
 		setEXP(exp-e);
 		setPoints(getPoints()+1);
 	}
 
 	@Override
 	public void setLevel(int l) {
-		for(int i = level; i <= l;i++){
+		for(int i = levelCore; i <= l;i++){
 			levelUp(0);
 		}
-		for(int i = level; i >= l;i--){
-			setLevel(level-1);
+		for(int i = levelCore; i >= l;i--){
+			setLevel(levelCore-1);
 			setEXP(0);
 			setPoints(getPoints()-1);
 		}
-		level = l;
+		levelCore = l;
 		setEXP(0);
 	}
 
@@ -53,7 +55,7 @@ public class IntelligentEntity extends Entity  implements Intelligent{
 
 	@Override
 	public int getLevel() {
-		return level;
+		return levelCore;
 	}
 
 	@Override

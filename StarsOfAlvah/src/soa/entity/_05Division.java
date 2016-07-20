@@ -29,6 +29,43 @@ public class _05Division extends _06Kingdom{
 		else if(division == 0)k=0;
 			
 		this.setKingdom(k);
+		
+		int m=0,b=0,s=0;
+		if(i==1){
+			m=1000;
+			b=1000;
+			s=1000;
+		}else if(i==2){
+			m=10;
+			b=2900;
+			s=90;
+		}else if(i==3){
+			m=10;
+			b=90;
+			s=2900;
+		}else if(i==4){
+			m=100;
+			b=900;
+			s=2000;
+		}else if(i==5){
+			m=10;
+			b=500;
+			s=2490;
+		}else if(i==6){
+			m=10;
+			b=2500;
+			s=490;
+		}else if(i==7){
+			m=510;
+			b=1000;
+			s=1490;
+		}else{
+			s=3000;
+		}
+			
+		addMind(m);
+		addBody(b);
+		addSpirit(s);
 	}
 	
 	public String getDivision(){

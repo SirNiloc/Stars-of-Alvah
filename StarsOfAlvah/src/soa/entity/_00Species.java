@@ -3,6 +3,8 @@ package soa.entity;
 public class _00Species extends _01Genus{
 	
 	private String species;
+	
+	
 
 	public _00Species(String spec, int clas) {
 		super(clas);
@@ -21,9 +23,6 @@ public class _00Species extends _01Genus{
 		setSpecies(spec);
 	}
 	
-
-
-	
 	public void setSpecies(String s){
 		species = this.getGenus()+" "+s;
 	}
@@ -31,4 +30,6 @@ public class _00Species extends _01Genus{
 	public String getSpecies(){
 		return species;
 	}
+	
+
 }
