@@ -15,7 +15,7 @@ public class MineralGem extends Mineral{
 				"Tier: "+getTier()+"\n"+
 				"Strength: "+getStrength()+"\n"+
 				"Magic: "+getMagic()+"\n"+
-				"Color: "+getRed()+" "+getRed()+" "+getBlue()+" "+getAlpha();
+				"Color: "+getRed()+" "+getBlue()+" "+getGreen()+" "+getAlpha();
 	}
 	
 	

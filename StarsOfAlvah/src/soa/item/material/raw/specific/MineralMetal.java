@@ -17,7 +17,7 @@ public class MineralMetal extends Mineral{
 				"Strength: "+getStrength()+"\n"+
 				"Magic: "+getMagic()+"\n"+
 				"Conductivity: "+getConductivity()+"\n"+
-				"Color: "+getRed()+" "+getRed()+" "+getBlue();
+				"Color: "+getRed()+" "+getGreen()+" "+getBlue();
 	}
 
 	private int getConductivity() {

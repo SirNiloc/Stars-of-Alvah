@@ -41,12 +41,43 @@ public class Generate {
 	//Material Raw
 	public static MineralGem gem(String name, int tier){
 		int points = Material.getPoints(tier);
-		int red = randRange(0,255);
-		int green = randRange(0,255);
-		int blue = randRange(0,255);
+		int red;
+		int green;
+		int blue;
 		int alpha = randRange(0,254);
 		int strength = randRange(10,points);
 		int magic = points-strength;
+		
+		int c1 = randRange(170,255);
+		int c2 = randRange(85,170);
+		int c3 = randRange(0,85);
+		
+		int randy = randRange(0,5);
+		if(randy == 1){
+			red = c1;
+			green = c2;
+			blue = c3;
+		}else if(randy == 2){
+			red = c1;
+			blue = c2;
+			green = c3;
+		}else if(randy == 3){
+			blue = c1;
+			green = c2;
+			red = c3;
+		}else if(randy == 4){
+			blue = c1;
+			red = c2;
+			green = c3;
+		}else if(randy == 5){
+			green = c1;
+			red = c2;
+			blue = c3;
+		}else{
+			green = c1;
+			blue = c2;
+			red = c3;
+		}
 		
 		MineralGem gem = new MineralGem(name, tier, true, strength, magic, red, green, blue, alpha);
 		RegMaterial.registerMaterial(gem);
@@ -57,12 +88,44 @@ public class Generate {
 	
 	public static MineralMetal metal(String name, int tier){
 		int points = Material.getPoints(tier);
-		int red = randRange(0,255);
-		int green = randRange(0,255);
-		int blue = randRange(0,255);
+		int red;
+		int green;
+		int blue;
 		int strength = randRange(10,points);
 		int conductivity = randRange(0,points-strength);
 		int magic = (points-strength)-conductivity;
+		
+		int c1 = randRange(170,255);
+		int c2 = randRange(85,170);
+		int c3 = randRange(0,85);
+		
+		int randy = randRange(0,5);
+		if(randy == 1){
+			red = c1;
+			green = c2;
+			blue = c3;
+		}else if(randy == 2){
+			red = c1;
+			blue = c2;
+			green = c3;
+		}else if(randy == 3){
+			blue = c1;
+			green = c2;
+			red = c3;
+		}else if(randy == 4){
+			blue = c1;
+			red = c2;
+			green = c3;
+		}else if(randy == 5){
+			green = c1;
+			red = c2;
+			blue = c3;
+		}else{
+			green = c1;
+			blue = c2;
+			red = c3;
+		}
+			
 		
 		MineralMetal metal = new MineralMetal(name, tier, true, strength, magic, red, green, blue, conductivity);
 		RegMaterial.registerMaterial(metal);
