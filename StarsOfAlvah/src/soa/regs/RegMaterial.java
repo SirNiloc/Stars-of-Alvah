@@ -8,11 +8,11 @@ public class RegMaterial {
 
 	private static ArrayList<Material> materials = new ArrayList<Material>();
 
-	public ArrayList<Material> getMaterials(){
+	public static ArrayList<Material> getMaterials(){
 		return materials;
 	}
 	
-	public void registerMaterial(Material r){
+	public static void registerMaterial(Material r){
 		if(materials.contains(r));
 		else materials.add(r);
 	}

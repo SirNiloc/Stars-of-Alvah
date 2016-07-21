@@ -4,9 +4,15 @@ import soa.item.material.Material;
 
 public class MaterialRaw extends Material{
 
-	public MaterialRaw(String n, int t) {
+	private boolean destroyOnHarvest = true;
+	
+	public MaterialRaw(String n, int t, boolean d) {
 		super(n, t);
-		// TODO Auto-generated constructor stub
+		destroyOnHarvest = d;
 	}
 
+	public boolean getDestroyOnHarvest(){
+		return destroyOnHarvest;
+	}
+	
 }
