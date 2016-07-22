@@ -12,8 +12,8 @@ public class PlantMedical extends Plant{
 	
 	private int duration;
 	
-	public PlantMedical(String n, int t,boolean de,int ga,int gt, int healI,int healR,int spiritI,int spiritR,int d) {
-		super(n, t,de,ga,gt);
+	public PlantMedical(String n, int t,boolean de,long ammount,int ga,int gt, int healI,int healR,int spiritI,int spiritR,int d) {
+		super(n, t,de,ammount,ga,gt);
 
 		healInstant = healI;
 		healRegen = healR;

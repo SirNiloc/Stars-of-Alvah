@@ -10,8 +10,8 @@ public class Mineral extends MaterialRaw{
 	int green;
 	int blue;
 	
-	public Mineral(String n, int t, boolean d, int str,int m,int r,int g, int b,int a) {
-		super(n, t, d);
+	public Mineral(String n, int t, boolean d,long ammount, int str,int m,int r,int g, int b,int a) {
+		super(n, t, d, ammount);
 		strength = str;
 		magic = m;
 		red = r;

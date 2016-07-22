@@ -6,8 +6,8 @@ public class MineralMetal extends Mineral{
 
 	int conductivity;
 	
-	public MineralMetal(String name, int tier, boolean destroyOnHarvest, int strength, int magic, int red,int green, int blue,int conduct) {
-		super(name, tier, destroyOnHarvest, strength, magic, red, green, blue,255);
+	public MineralMetal(String name, int tier, boolean destroyOnHarvest,long ammount, int strength, int magic, int red,int green, int blue,int conduct) {
+		super(name, tier, destroyOnHarvest,ammount, strength, magic, red, green, blue,255);
 		conductivity = conduct;
 	}
 

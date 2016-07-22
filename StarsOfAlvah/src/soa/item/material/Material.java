@@ -4,10 +4,15 @@ public class Material {
 
 	private String name;
 	private int tier;
+	private long ammount = 0;
 	
-	public Material(String n, int t){
+	public Material(String n, int t, long ammount){
 		name = n;
 		tier = t;
+	}
+	
+	public long getAmmount(){
+		return ammount;
 	}
 	
 	public String getName(){

@@ -79,7 +79,8 @@ public class Generate {
 			red = c3;
 		}
 		
-		MineralGem gem = new MineralGem(name, tier, true, strength, magic, red, green, blue, alpha);
+		long ammount=0;//TODO Ammount gen
+		MineralGem gem = new MineralGem(name, tier, true,ammount, strength, magic, red, green, blue, alpha);
 		RegMaterial.registerMaterial(gem);
 		
 		return gem;
@@ -126,8 +127,8 @@ public class Generate {
 			red = c3;
 		}
 			
-		
-		MineralMetal metal = new MineralMetal(name, tier, true, strength, magic, red, green, blue, conductivity);
+		long ammount=0;//TODO Ammount gen
+		MineralMetal metal = new MineralMetal(name, tier, true,ammount, strength, magic, red, green, blue, conductivity);
 		RegMaterial.registerMaterial(metal);
 		
 		return metal;
@@ -144,7 +145,8 @@ public class Generate {
 		int strength = randRange(points/4,points);
 		int durability = points-strength;
 		
-		PlantCraft plant = new PlantCraft(name, tier, false, ammount, time, strength, wieght, durability);
+		long at=0;//TODO Ammount gen
+		PlantCraft plant = new PlantCraft(name, tier, false,at, ammount, time, strength, wieght, durability);
 		RegMaterial.registerMaterial(plant);
 		
 		return plant;
@@ -160,7 +162,8 @@ public class Generate {
 		int nurishment = randRange(points/4,points);
 		int flavor = points-nurishment;
 		
-		PlantFood plant = new PlantFood(name, tier, false, ammount, time, nurishment, flavor);
+		long at=0;//TODO Ammount gen
+		PlantFood plant = new PlantFood(name, tier, false,at, ammount, time, nurishment, flavor);
 		RegMaterial.registerMaterial(plant);
 		
 		return plant;
@@ -181,8 +184,8 @@ public class Generate {
 		
 		int duration = points-(hi+si+sr+hr);
 		
-		
-		PlantMedical plant = new PlantMedical(name, tier, false, ammount, time, hi, hr, si, sr, duration);
+		long at=0;//TODO Ammount gen
+		PlantMedical plant = new PlantMedical(name, tier, false,at, ammount, time, hi, hr, si, sr, duration);
 		RegMaterial.registerMaterial(plant);
 		
 		return plant;

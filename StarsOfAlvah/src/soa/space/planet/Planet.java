@@ -1,5 +1,9 @@
 package soa.space.planet;
 
+import java.util.ArrayList;
+
+import soa.item.material.Material;
+
 public class Planet {
 
 	private String name = "EMPTY";
@@ -11,10 +15,12 @@ public class Planet {
 	private int water = 0;					//(none = 0 solid = 1 liquid = 2 gas = 3)
 	private int oxygen = 0;					//(0-30)
 
+
+	
 	private String info = "EMPTY";
 	//TODO Add Characteristics
 	
-	public Planet(){}
+	public Planet(boolean e){}
 	
 	public Planet(String n, int t, int p, int w, int o, boolean i){
 		name = n;
@@ -25,6 +31,22 @@ public class Planet {
 		
 		inhabited = i;
 		setPlanetInfo();
+	}
+	
+	public Planet(String n, int t, int p, int w, int o, boolean i,ArrayList<Material> m){
+		name = n;
+		temp = t;					//(low 0-6 high)
+		setRad(p); 	//(0-100%)
+		water = w;
+		setOxygen(o);
+		
+		
+		inhabited = i;
+		setPlanetInfo();
+	}
+	
+	}
+	
 	}
 	
 	private void setRad(int o) {
