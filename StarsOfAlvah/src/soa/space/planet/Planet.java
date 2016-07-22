@@ -5,9 +5,9 @@ public class Planet {
 	private String name = "EMPTY";
 	
 	private boolean inhabited = false;
-	private float inhabitablity = 0;	//(0-100%)
-	private int temp = 0;					//(low 0-6 high)
-	private int radiationProtection = 0; 	//(0-100%)
+	private float inhabitablity = 0;		//(0 - 100%)
+	private int temp = 0;					//(low 0 - 6 high)
+	private int radiationProtection = 0; 	//(0 - 100%)
 	private boolean hasWater = false;
 	private boolean hasOxygen = false;
 
