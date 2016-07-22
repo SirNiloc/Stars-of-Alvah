@@ -15,6 +15,7 @@ public class Planet {
 	private int water = 0;					//(none = 0 solid = 1 liquid = 2 gas = 3)
 	private int oxygen = 0;					//(0-30)
 
+	private ArrayList<Material> resources = new ArrayList<Material>();
 
 	
 	private String info = "EMPTY";
@@ -40,13 +41,18 @@ public class Planet {
 		water = w;
 		setOxygen(o);
 		
+		resources = m;
 		
 		inhabited = i;
 		setPlanetInfo();
 	}
 	
+	public ArrayList<Material> getResources(){
+		return resources;
 	}
 	
+	public void setResources(ArrayList<Material> m){
+		resources = m;
 	}
 	
 	private void setRad(int o) {
