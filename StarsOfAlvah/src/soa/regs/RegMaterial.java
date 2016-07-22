@@ -4,13 +4,14 @@ import java.util.ArrayList;
 
 import soa.item.material.Material;
 import soa.item.material.raw.MaterialRaw;
-import soa.item.material.raw.Mineral;
-import soa.item.material.raw.Plant;
-import soa.item.material.raw.specific.MineralGem;
-import soa.item.material.raw.specific.MineralMetal;
-import soa.item.material.raw.specific.PlantCraft;
-import soa.item.material.raw.specific.PlantFood;
-import soa.item.material.raw.specific.PlantMedical;
+import soa.item.material.raw.gas.Gas;
+import soa.item.material.raw.mineral.Mineral;
+import soa.item.material.raw.mineral.MineralGem;
+import soa.item.material.raw.mineral.MineralMetal;
+import soa.item.material.raw.plant.Plant;
+import soa.item.material.raw.plant.PlantCraft;
+import soa.item.material.raw.plant.PlantFood;
+import soa.item.material.raw.plant.PlantMedical;
 import soa.item.material.refined.MaterialRefined;
 
 public class RegMaterial {
@@ -21,6 +22,8 @@ public class RegMaterial {
 	private static ArrayList<Mineral> minerals = new ArrayList<Mineral>();
 	private static ArrayList<MineralGem> gems = new ArrayList<MineralGem>();
 	private static ArrayList<MineralMetal> metals = new ArrayList<MineralMetal>();
+	
+	private static ArrayList<Gas> gas = new ArrayList<Gas>();
 	
 	private static ArrayList<Plant> plants = new ArrayList<Plant>();
 	private static ArrayList<PlantCraft> plantsCraft = new ArrayList<PlantCraft>();
@@ -64,8 +67,12 @@ public class RegMaterial {
 				}else if(r instanceof PlantFood){
 					if(plantsFood.contains(r));
 					else plantsFood.add((PlantFood) r);
+					
+				}else if(r instanceof Gas){
+					if(gas.contains(r));
+					else gas.add((Gas) r);
+
 				}
-				
 			}
 			
 		}else if(r instanceof MaterialRefined){
@@ -76,6 +83,10 @@ public class RegMaterial {
 	
 	public static ArrayList<MaterialRaw> getRawMaterials(){
 		return raw;
+	}
+	
+	public static ArrayList<Gas> getGases(){
+		return gas;
 	}
 	
 	public static ArrayList<Mineral> getMinerals(){

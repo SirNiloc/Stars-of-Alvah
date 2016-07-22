@@ -1,6 +1,4 @@
-package soa.item.material.raw.specific;
-
-import soa.item.material.raw.Mineral;
+package soa.item.material.raw.mineral;
 
 public class MineralMetal extends Mineral{
 

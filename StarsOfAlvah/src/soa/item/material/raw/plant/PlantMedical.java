@@ -1,6 +1,4 @@
-package soa.item.material.raw.specific;
-
-import soa.item.material.raw.Plant;
+package soa.item.material.raw.plant;
 
 public class PlantMedical extends Plant{
 

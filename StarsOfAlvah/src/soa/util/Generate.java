@@ -2,11 +2,11 @@ package soa.util;
 
 import soa.entity._00Species;
 import soa.item.material.Material;
-import soa.item.material.raw.specific.MineralGem;
-import soa.item.material.raw.specific.MineralMetal;
-import soa.item.material.raw.specific.PlantCraft;
-import soa.item.material.raw.specific.PlantFood;
-import soa.item.material.raw.specific.PlantMedical;
+import soa.item.material.raw.mineral.MineralGem;
+import soa.item.material.raw.mineral.MineralMetal;
+import soa.item.material.raw.plant.PlantCraft;
+import soa.item.material.raw.plant.PlantFood;
+import soa.item.material.raw.plant.PlantMedical;
 import soa.regs.RegMaterial;
 import soa.regs.RegRace;
 

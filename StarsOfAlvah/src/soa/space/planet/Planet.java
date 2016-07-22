@@ -36,7 +36,7 @@ public class Planet {
 	
 	public Planet(String n, int t, int p, int w, int o, boolean i,ArrayList<Material> m){
 		name = n;
-		temp = t;					//(low 0-6 high)
+		setTemp(t);					//(low 0-6 high)
 		setRad(p); 	//(0-100%)
 		water = w;
 		setOxygen(o);
@@ -47,6 +47,12 @@ public class Planet {
 		setPlanetInfo();
 	}
 	
+	public void setTemp(int t) {
+		if(t<0)temp=0;
+		else if(t>6)temp=6;
+		else temp=t;
+	}
+
 	public ArrayList<Material> getResources(){
 		return resources;
 	}
@@ -55,13 +61,15 @@ public class Planet {
 		resources = m;
 	}
 	
-	private void setRad(int o) {
+	public void setRad(int o) {
 		if(o<0) radiationProtection =0;
 		else if(o>100) radiationProtection = 100;
 		else radiationProtection = o;
 	}
+	
 
-	private void setOxygen(int o) {
+
+	public void setOxygen(int o) {
 		if(o<0) oxygen =0;
 		else if(o>30) oxygen = 30;
 		else oxygen = o;
@@ -103,15 +111,20 @@ public class Planet {
 		info = "Name: "+name+"\n"+
 		"Inhabited: "+inhabited+"\n"+
 		"Inhabitablity: "+getInhabitablity()+"\n"+
-		"Temperature Rank: "+temp+"\n"+
+		"Temperature Rank: "+getTemp()+"\n"+
 		"Protection Rank: "+radiationProtection+"\n"+
 		"Water: "+getWater()+"\n"+
 		"Air Rating: "+getOxygen()+"\n";
 	}
 	
+	private int getTemp() {
+		return temp;
+	}
+
 	private int getOxygen() {
 		return oxygen;
 	}
+	
 
 	private String getWater() {
 		String r = "None";
