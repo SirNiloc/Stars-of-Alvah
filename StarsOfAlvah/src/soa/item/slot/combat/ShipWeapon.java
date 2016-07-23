@@ -1,4 +1,4 @@
-package soa.item.weapon.ship;
+package soa.item.slot.combat;
 
 import soa.item.weapon.Weapon;
 

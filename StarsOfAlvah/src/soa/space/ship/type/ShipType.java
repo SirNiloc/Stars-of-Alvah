@@ -16,29 +16,60 @@ public class ShipType {
 	private int baseShield = 0;
 	private int baseSpeed = 0;
 	
-	private String name = "????";
+	private String name = "Experimental";
 	
-	public ShipType(String n, int rankHealth, int rankShield,int rankSpeed, int sci,int com, int econ, int log){
-		name=n;
-		baseHealth = rankHealth;
-		baseShield = rankShield;
-		baseSpeed = rankSpeed;
-		slotScience = sci;
-		slotCombat = com;
-		slotEcon = econ;
-		slotLogistics = log;
+	public ShipType(String n, int rankHealth, int rankShield,int rankSpeed,
+			int sci,int com, int econ, int log){
+		name=n+" Class";
+
+		setRanks(rankHealth,rankShield,rankSpeed,sci,com,econ,log);
 		setScores();
+	}
+	
+	private void setRanks(double h, double s, double sp, double sci, double com, double econ, double log){
+		double points = h+s+sp+sci+com+econ+log;
+		double ph = h/points;
+		double ps = s/points;
+		double psp = sp/points;
+		double psci = sci/points;
+		double pcom = com/points;
+		double pecon = econ/points;
+		double plog = log/points;
+		
+		baseHealth = getRank(ph);
+		baseShield =getRank(ps);
+		baseSpeed = getRank(psp);
+		slotScience = getRank(psci);
+		slotCombat = getRank(pcom);
+		slotEcon = getRank(pecon);
+		slotLogistics = getRank(plog);
+	}
+	
+	private int getRank(double i){
+		return (int) (60*i);
 	}
 	
 	public String getName(){
 		return name;
 	}
 	
+	public int rankHull(){
+		return baseHealth;
+	}
+	
+	public int rankShield(){
+		return baseShield;
+	}
+	
+	public int rankSpeed(){
+		return baseSpeed;
+	}
+	
 	private void setScores(){
-		scoreCombat = baseHealth+baseShield+baseSpeed+slotCombat;
-		scoreScience = slotLogistics+slotEcon+baseSpeed+slotScience;
-		scoreEcon = slotLogistics+slotEcon+baseSpeed+baseSpeed;
-		scoreLogistics = slotLogistics+slotLogistics+baseSpeed+baseSpeed;
+		scoreCombat = rankHull()+rankShield()+rankSpeed()+slotCombat;
+		scoreScience = slotLogistics+slotEcon+rankSpeed()+slotScience;
+		scoreEcon = slotLogistics+slotEcon+rankSpeed()+rankSpeed();
+		scoreLogistics = slotLogistics+slotLogistics+rankSpeed()+rankSpeed();
 	}
 	
 	public int getCombatScore(){
@@ -52,6 +83,19 @@ public class ShipType {
 	}
 	public int getLogisticsScore(){
 		return scoreLogistics;
+	}
+	
+	public int getCombatSlots(){
+		return slotCombat;
+	}
+	public int getEconSlot(){
+		return slotEcon;
+	}
+	public int getScienceSlot(){
+		return slotScience;
+	}
+	public int getLogisticsSlot(){
+		return slotLogistics;
 	}
 	
 	
