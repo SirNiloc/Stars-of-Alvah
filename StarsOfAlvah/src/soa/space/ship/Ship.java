@@ -1,5 +1,7 @@
 package soa.space.ship;
 
+import soa.space.ship.type.ShipType;
+
 public class Ship {
 
 	private ShipType type;
