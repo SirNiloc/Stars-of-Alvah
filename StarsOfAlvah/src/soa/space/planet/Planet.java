@@ -24,6 +24,8 @@ public class Planet {
 		temp = t;					//(low 0-6 high)
 		setRad(p); 	//(0-100%)randRange(0,90000)
 		water = w;
+		checkTempAndWater();
+		
 		setOxygen(o);
 		setSize(s);
 		inhabited = i;
@@ -44,6 +46,8 @@ public class Planet {
 		setTemp(t);					//(low 0-6 high)
 		setRad(p); 	//(0-100%)
 		water = w;
+		checkTempAndWater();
+		
 		setOxygen(o);
 		setSize(s);
 		resources = m;
@@ -115,30 +119,72 @@ public class Planet {
 	public void setPlanetInfo() {
 		info = "Name: "+name+"\n"+
 		"Inhabited: "+inhabited+"\n"+
-		"Inhabitablity: "+getInhabitablity()+"\n"+
-		"Temperature Rank: "+getTemp()+"\n"+
-		"Protection Rank: "+radiationProtection+"\n"+
+		"Inhabitablity: "+getInhabitablity()+"%\n"+
+		"Temperature Rank: "+getTempString()+"\n"+
+		"Protection Rank: "+radiationProtection+"%\n"+
 		"Water: "+getWater()+"\n"+
-		"Air Rating: "+getOxygen()+"\n";
+		"Air Rating: "+getAirRate()+"\n";
 	}
 	
 	private int getTemp() {
 		return temp;
+	}
+	
+	private void checkTempAndWater() {
+		if(water <= 1 && water >= 3){
+			if(		getTemp() == 0)water = 2;
+			else if(getTemp() == 1)water = 2;
+			else if(getTemp() == 2){
+				if(water == 3)water = 1;
+				else water = 2;
+			}
+			else if(getTemp() == 3)water = 1;//water
+			else if(getTemp() == 4){
+				if(water == 2)water = 1;
+				else water = 3;
+			}
+			else if(getTemp() == 5)water = 3;
+			else water = 3;
+		}
+	}
+	
+	private String getTempString() {
+		String r;
+		if(		getTemp() == 0)r = "Extremely Cold";//ice
+		else if(getTemp() == 1)r = "Very Cold";//ice
+		else if(getTemp() == 2)r = "Cold";//wi
+		else if(getTemp() == 3)r = "Moderate";//water
+		else if(getTemp() == 4)r = "Hot";//wg
+		else if(getTemp() == 5)r = "Very Hot";//gas
+		else r = "Extremely Hot";//gas
+		return r;
 	}
 
 	private int getOxygen() {
 		return oxygen;
 	}
 	
+	private String getAirRate() {
+		String r;
+		if(		getOxygen() < 5)r = "Terrible";
+		else if(getOxygen() < 10)r = "Very Poor";
+		else if(getOxygen() < 15)r = "Poor";
+		else if(getOxygen() < 20)r = "Good";
+		else if(getOxygen() < 25)r = "Great";
+		else if(getOxygen() < 30)r = "Near Perfect";
+		else r = "Perfect";
+		return r;
+	}
+	
 
 	private String getWater() {
 		String r = "None";
 		if(water == 2){
-			r = "Solid";
+			r = "Frozen";
 		}else if(water == 1){
 			r = "Liquid";
 		}else if(water == 3){
-			r = "Gas";
+			r = "Gaseous";
 		}
 		return r;
 	}
