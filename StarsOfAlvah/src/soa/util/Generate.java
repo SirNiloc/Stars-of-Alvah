@@ -8,6 +8,9 @@ import soa.item.material.raw.mineral.MineralMetal;
 import soa.item.material.raw.plant.PlantCraft;
 import soa.item.material.raw.plant.PlantFood;
 import soa.item.material.raw.plant.PlantMedical;
+import soa.item.weapon.damagetype.DamageType;
+import soa.item.weapon.damagetype.Energy;
+import soa.item.weapon.damagetype.Kinetic;
 import soa.regs.RegMaterials;
 import soa.regs.RegPlanet;
 import soa.regs.RegRace;
@@ -42,14 +45,19 @@ public class Generate {
 		regMat = r;
 	}
 	//Reg
-	//Number
+	//Util
 	public static int randRangeInt(int min, int max){
 		return (int) randRangeDouble(min,max);
 	}
 	public static double randRangeDouble(double min, double max){
 		return min + (double)(Math.random() * ((max - min) + 1));
+	}
+	public static boolean randBoolWieght(int i){
+		int r = randRangeInt(0,i);
+		if(r==0)return true;
+		return false;
 	}	
-	//Number
+	//Util
 	//Race
 	public static _00Species race(String species){
 		_00Species race = new _00Species(species, randRangeInt(0,27));
@@ -572,4 +580,65 @@ public class Generate {
 		return new Solar(name, h, s, speed, sci, com, econ, log);
 	}
 	//Ship Type
+	//Damage Type
+	public static DamageType damageType(String name){
+		double flesh = randRangeDouble(1, 100);
+		double armor = randRangeDouble(1, 100);
+		double shield = randRangeDouble(1, 100);
+		double energy = randRangeDouble(1, 100);
+		
+		return new DamageType(name, flesh, armor, shield, energy, randBoolWieght(50));
+	}
+	
+	public static Energy damageEnergy(String name){
+		double flesh = randRangeDouble(1, 50);
+		double armor = randRangeDouble(1, 50);
+		double shield = randRangeDouble(1, 100);
+		double energy = randRangeDouble(1, 100);
+		
+		return new Energy(name, flesh, armor, shield, energy, randBoolWieght(50));
+	}
+	
+	public static Kinetic damageKinetic(String name){
+		double flesh = randRangeDouble(1, 100);
+		double armor = randRangeDouble(1, 100);
+		double shield = randRangeDouble(1, 50);
+		double energy = randRangeDouble(1, 50);
+		
+		return new Kinetic(name, flesh, armor, shield, energy, randBoolWieght(50));
+	}
+	
+	public static DamageType damageFlesh(String name){
+		double flesh = randRangeDouble(1, 123);
+		double armor = randRangeDouble(1, 5);
+		double shield = randRangeDouble(1, 5);
+		double energy = randRangeDouble(1, 5);
+		
+		return new DamageType(name, flesh, armor, shield, energy, randBoolWieght(50));
+	}
+	public static DamageType damageAura(String name){
+		double flesh = randRangeDouble(1, 5);
+		double armor = randRangeDouble(1, 5);
+		double shield = randRangeDouble(1, 5);
+		double energy = randRangeDouble(1, 123);
+		
+		return new DamageType(name, flesh, armor, shield, energy, randBoolWieght(50));
+	}
+	public static DamageType damageArmor(String name){
+		double flesh = randRangeDouble(1, 5);
+		double armor = randRangeDouble(1, 123);
+		double shield = randRangeDouble(1, 5);
+		double energy = randRangeDouble(1, 5);
+		
+		return new DamageType(name, flesh, armor, shield, energy, randBoolWieght(50));
+	}
+	public static DamageType damageShield(String name){
+		double flesh = randRangeDouble(1, 5);
+		double armor = randRangeDouble(1, 5);
+		double shield = randRangeDouble(1, 123);
+		double energy = randRangeDouble(1, 5);
+		
+		return new DamageType(name, flesh, armor, shield, energy, randBoolWieght(50));
+	}
+	//Damage Type
 }

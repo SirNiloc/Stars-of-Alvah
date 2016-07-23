@@ -1,11 +1,11 @@
 package soa.item.weapon;
 
 import soa.item.Item;
-import soa.item.weapon.type.WeaponType;
+import soa.item.weapon.damagetype.DamageType;
 
 public class Weapon extends Item{
 
-	WeaponType type;
+	DamageType type;
 	
 	//TODO Add Characteristics
 }
