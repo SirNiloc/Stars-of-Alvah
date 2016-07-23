@@ -131,14 +131,14 @@ public class Planet {
 	}
 	
 	private void checkTempAndWater() {
-		if(water <= 1 && water >= 3){
+		if(water >= 1 && water <= 3){
 			if(		getTemp() == 0)water = 2;
 			else if(getTemp() == 1)water = 2;
 			else if(getTemp() == 2){
 				if(water == 3)water = 1;
 				else water = 2;
 			}
-			else if(getTemp() == 3)water = 1;//water
+			else if(getTemp() == 3)water = 1;
 			else if(getTemp() == 4){
 				if(water == 2)water = 1;
 				else water = 3;
