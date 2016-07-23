@@ -21,6 +21,19 @@ import soa.space.planet.types.solid.PlanetIce;
 import soa.space.planet.types.solid.PlanetMineral;
 import soa.space.ship.Ship;
 import soa.space.ship.type.ShipType;
+import soa.space.ship.type.combat.Carrier;
+import soa.space.ship.type.combat.Countermeasure;
+import soa.space.ship.type.combat.Cruiser;
+import soa.space.ship.type.combat.Destroyer;
+import soa.space.ship.type.combat.Frigate;
+import soa.space.ship.type.combat.Stealth;
+import soa.space.ship.type.combat.Striker;
+import soa.space.ship.type.econ.Cargo;
+import soa.space.ship.type.econ.Extractor;
+import soa.space.ship.type.logistics.Transport;
+import soa.space.ship.type.science.Archaeology;
+import soa.space.ship.type.science.Solar;
+import soa.space.ship.type.science.Trapper;
 
 public class Generate {
 	static RegMaterials regMat = new RegMaterials();
@@ -360,18 +373,203 @@ public class Generate {
 		
 		return(new Ship(name,type,tier, hull, shield, -1, -1, 100, crew, 0, 0, 0));
 	}
+	public static Ship ship(String name, String className, int t){
+		int tier = t;
+		if(t < 1) tier = 1;
+		double hull = randRangeDouble(1,100);
+		int crew = randRangeInt(1,100);
+		double shield = randRangeDouble(1,100);
+		
+		int tt = randRangeInt(0,13);
+		
+		ShipType type;
+		
+		if(tt == 0) type = solar(className);
+		else if(tt == 1) type = transport(className);
+		else if(tt == 2) type = carrier(className);
+		else if(tt == 3) type = defense(className);
+		else if(tt == 4) type = cruiser(className);
+		else if(tt == 5) type = destroyer(className);
+		else if(tt == 6) type = frigate(className);
+		else if(tt == 7) type = stealth(className);
+		else if(tt == 8) type = striker(className);
+		else if(tt == 9) type = cargo(className);
+		else if(tt == 10) type = extractor(className);
+		else if(tt == 11) type = trapper(className);
+		else if(tt == 12) type = archaeology(className);
+		else type = shipClass(className);
+		
+		
+		return(new Ship(name,type,tier, hull, shield, -1, -1, 100, crew, 0, 0, 0));
+	}
 	//Ship
 	//Ship Type
 	public static ShipType shipClass(String name){
-		int h = randRangeInt(1,61);
+		int h = randRangeInt(1,60);
 		int log = randRangeInt(1,60);
 		int econ = randRangeInt(1,60);
 		int com = randRangeInt(1,60);
 		int sci = randRangeInt(1,60);
-		int speed = randRangeInt(1,61);
+		int speed = randRangeInt(1,60);
 		int s = randRangeInt(1,60);
 		
 		return new ShipType(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Transport transport(String name){
+		int h = randRangeInt(1,30);
+		int log = randRangeInt(1,230);
+		int econ = randRangeInt(1,30);
+		int com = randRangeInt(1,30);
+		int sci = randRangeInt(1,20);
+		int speed = randRangeInt(1,230);
+		int s = randRangeInt(1,30);
+		
+		return new Transport(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Carrier carrier(String name){
+		int h = randRangeInt(1,150);
+		int log = randRangeInt(1,100);
+		int econ = randRangeInt(1,10);
+		int com = randRangeInt(1,200);
+		int sci = randRangeInt(1,10);
+		int speed = randRangeInt(1,10);
+		int s = randRangeInt(1,130);
+		
+		return new Carrier(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Countermeasure defense(String name){
+		int h = randRangeInt(1,150);
+		int log = randRangeInt(1,10);
+		int econ = randRangeInt(1,10);
+		int com = randRangeInt(1,170);
+		int sci = randRangeInt(1,10);
+		int speed = randRangeInt(1,100);
+		int s = randRangeInt(1,150);
+		
+		return new Countermeasure(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Cruiser cruiser(String name){
+		int h = randRangeInt(1,70);
+		int log = randRangeInt(1,50);
+		int econ = randRangeInt(1,10);
+		int com = randRangeInt(1,370);
+		int sci = randRangeInt(1,10);
+		int speed = randRangeInt(1,50);
+		int s = randRangeInt(1,40);
+		
+		return new Cruiser(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Destroyer destroyer(String name){
+		int h = randRangeInt(1,140);
+		int log = randRangeInt(1,40);
+		int econ = randRangeInt(1,10);
+		int com = randRangeInt(1,200);
+		int sci = randRangeInt(1,10);
+		int speed = randRangeInt(1,50);
+		int s = randRangeInt(1,150);
+		
+		return new Destroyer(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Frigate frigate(String name){
+		int h = randRangeInt(1,100);
+		int log = randRangeInt(1,40);
+		int econ = randRangeInt(1,40);
+		int com = randRangeInt(1,100);
+		int sci = randRangeInt(1,10);
+		int speed = randRangeInt(1,220);
+		int s = randRangeInt(1,100);
+		
+		return new Frigate(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Stealth stealth(String name){
+		int h = randRangeInt(1,10);
+		int log = randRangeInt(1,50);
+		int econ = randRangeInt(1,50);
+		int com = randRangeInt(1,230);
+		int sci = randRangeInt(1,10);
+		int speed = randRangeInt(1,200);
+		int s = randRangeInt(1,50);
+		
+		return new Stealth(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Striker striker(String name){
+		int h = randRangeInt(1,20);
+		int log = randRangeInt(1,1);
+		int econ = randRangeInt(1,1);
+		int com = randRangeInt(1,200);
+		int sci = randRangeInt(1,1);
+		int speed = randRangeInt(1,280);
+		int s = randRangeInt(1,100);
+		
+		return new Striker(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Cargo cargo(String name){
+		int h = randRangeInt(1,10);
+		int log = randRangeInt(1,90);
+		int econ = randRangeInt(1,300);
+		int com = randRangeInt(1,10);
+		int sci = randRangeInt(1,10);
+		int speed = randRangeInt(1,220);
+		int s = randRangeInt(1,10);
+		
+		return new Cargo(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Extractor extractor(String name){
+		int h = randRangeInt(1,10);
+		int log = randRangeInt(1,90);
+		int econ = randRangeInt(1,300);
+		int com = randRangeInt(1,80);
+		int sci = randRangeInt(1,10);
+		int speed = randRangeInt(1,80);
+		int s = randRangeInt(1,80);
+		
+		return new Extractor(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Trapper trapper(String name){
+		int h = randRangeInt(1,10);
+		int log = randRangeInt(1,150);
+		int econ = randRangeInt(1,150);
+		int com = randRangeInt(1,50);
+		int sci = randRangeInt(1,150);
+		int speed = randRangeInt(1,70);
+		int s = randRangeInt(1,20);
+		
+		return new Trapper(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Archaeology archaeology(String name){
+		int h = randRangeInt(1,10);
+		int log = randRangeInt(1,60);
+		int econ = randRangeInt(1,200);
+		int com = randRangeInt(1,60);
+		int sci = randRangeInt(1,200);
+		int speed = randRangeInt(1,60);
+		int s = randRangeInt(1,10);
+		
+		return new Archaeology(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Solar solar(String name){
+		int h = randRangeInt(1,10);
+		int log = randRangeInt(1,100);
+		int econ = randRangeInt(1,100);
+		int com = randRangeInt(1,20);
+		int sci = randRangeInt(1,240);
+		int speed = randRangeInt(1,100);
+		int s = randRangeInt(1,30);
+		
+		return new Solar(name, h, s, speed, sci, com, econ, log);
 	}
 	//Ship Type
 }
