@@ -1,16 +1,14 @@
 package soa.space.planet.types.liquid;
 
-import java.util.ArrayList;
-
-import soa.item.material.raw.mineral.Mineral;
+import soa.space.planet.PlanetResources;
 import soa.space.planet.types.solid.PlanetMineral;
 
 public class PlanetMolten extends PlanetMineral {
 
 
 	
-	public PlanetMolten(String n, int t, int p, int w, int o, boolean i, ArrayList<Mineral> m) {
-		super(n, t, p, w, o, i, m);
+	public PlanetMolten(String n, int t, int p, int w, int o, boolean i,long s, PlanetResources m) {
+		super(n, t, p, w, o, i,s, m);
 		checkTemp(t);
 	}
 

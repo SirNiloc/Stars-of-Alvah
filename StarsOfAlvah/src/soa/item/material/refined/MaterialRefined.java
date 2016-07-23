@@ -4,8 +4,8 @@ import soa.item.material.Material;
 
 public class MaterialRefined extends Material{
 
-	public MaterialRefined(String n, int t,long a) {
-		super(n, t,a);
+	public MaterialRefined(String n, int t) {
+		super(n, t);
 		// TODO Auto-generated constructor stub
 	}
 

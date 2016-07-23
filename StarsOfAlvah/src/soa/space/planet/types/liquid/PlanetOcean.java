@@ -1,14 +1,12 @@
 package soa.space.planet.types.liquid;
 
-import java.util.ArrayList;
-
-import soa.item.material.Material;
 import soa.space.planet.Planet;
+import soa.space.planet.PlanetResources;
 
 public class PlanetOcean extends Planet {
 
-	public PlanetOcean(String n, int t, int p, int w, int o, boolean i, ArrayList<Material> m) {
-		super(n, t, p, w, o, i, m);
+	public PlanetOcean(String n, int t, int p, int w, int o, boolean i,long s, PlanetResources m) {
+		super(n, t, p, w, o, i,s, m);
 		checkTemp(t);
 	}
 	

@@ -4,15 +4,24 @@ public class Material {
 
 	private String name;
 	private int tier;
-	private long ammount = 0;
 	
-	public Material(String n, int t, long ammount){
+	private int id = 0;
+	private static int idLast = -1;
+		
+	public Material(String n, int t){
 		name = n;
 		tier = t;
+		id = getNextID();
 	}
 	
-	public long getAmmount(){
-		return ammount;
+	public int getID(){
+		return id;
+	}
+	public static int getCurrentID(){
+		return idLast;
+	}
+	public static int getNextID(){
+		return idLast+1;
 	}
 	
 	public String getName(){

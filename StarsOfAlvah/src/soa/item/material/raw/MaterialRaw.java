@@ -6,8 +6,8 @@ public class MaterialRaw extends Material{
 
 	private boolean destroyOnHarvest = true;
 	
-	public MaterialRaw(String n, int t, boolean d, long ammount) {
-		super(n, t, ammount);
+	public MaterialRaw(String n, int t, boolean d) {
+		super(n, t);
 		destroyOnHarvest = d;
 	}
 

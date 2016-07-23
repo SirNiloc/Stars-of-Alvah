@@ -7,8 +7,8 @@ public class PlantCraft extends Plant{
 	int durability;
 	
 	
-	public PlantCraft(String name, int tier, boolean destroyOnHarvest,long ammount, int growAmmount, int growTime,int strength,int w,int dura) {
-		super(name, tier, destroyOnHarvest,ammount, growAmmount, growTime);
+	public PlantCraft(String name, int tier, boolean destroyOnHarvest, int growAmmount, int growTime,int strength,int w,int dura) {
+		super(name, tier, destroyOnHarvest, growAmmount, growTime);
 		this.strength = strength;
 		weight = w;
 		durability = dura;

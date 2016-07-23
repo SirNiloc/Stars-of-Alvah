@@ -1,14 +1,12 @@
 package soa.space.planet.types;
 
-import java.util.ArrayList;
-
-import soa.item.material.Material;
 import soa.space.planet.Planet;
+import soa.space.planet.PlanetResources;
 
 public class PlanetTerra extends Planet {
 
-	public PlanetTerra(String name, int temp, int protect, int air, boolean i, ArrayList<Material> m) {
-		super(name, temp, protect, 2, air, i, m);
+	public PlanetTerra(String name, int temp, int protect, int air, boolean i,long s, PlanetResources m) {
+		super(name, temp, protect, 2, air, i,s, m);
 		checkTemp(temp);
 		checkProtect(protect);
 		checkAir(air);

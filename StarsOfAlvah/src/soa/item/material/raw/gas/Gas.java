@@ -9,8 +9,8 @@ public class Gas extends MaterialRaw{
 	private int body;
 	private int spirit;
 	
-	public Gas(String n, int t, boolean d, long ammount, int e,int m,int b,int s) {
-		super(n, t, d, ammount);
+	public Gas(String n, int t, boolean d, int e,int m,int b,int s) {
+		super(n, t, d);
 		energy = e;
 		mind = m;
 		body = b;

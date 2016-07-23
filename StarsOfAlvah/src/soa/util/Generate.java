@@ -7,8 +7,17 @@ import soa.item.material.raw.mineral.MineralMetal;
 import soa.item.material.raw.plant.PlantCraft;
 import soa.item.material.raw.plant.PlantFood;
 import soa.item.material.raw.plant.PlantMedical;
-import soa.regs.RegMaterial;
+import soa.regs.RegMaterials;
+import soa.regs.RegPlanet;
 import soa.regs.RegRace;
+import soa.space.planet.Planet;
+import soa.space.planet.PlanetResources;
+import soa.space.planet.types.PlanetTerra;
+import soa.space.planet.types.gas.PlanetGas;
+import soa.space.planet.types.liquid.PlanetMolten;
+import soa.space.planet.types.liquid.PlanetOcean;
+import soa.space.planet.types.solid.PlanetIce;
+import soa.space.planet.types.solid.PlanetMineral;
 
 public class Generate {
 	
@@ -37,7 +46,6 @@ public class Generate {
 		return race;
 	}
 	//Race
-	
 	//Material Raw
 	public static MineralGem gem(String name, int tier){
 		int points = Material.getPoints(tier);
@@ -79,14 +87,12 @@ public class Generate {
 			red = c3;
 		}
 		
-		long ammount=0;//TODO Ammount gen
-		MineralGem gem = new MineralGem(name, tier, true,ammount, strength, magic, red, green, blue, alpha);
-		RegMaterial.registerMaterial(gem);
+		MineralGem gem = new MineralGem(name, tier, true, strength, magic, red, green, blue, alpha);
+		RegMaterials.register(gem);
 		
 		return gem;
 		
 	}
-	
 	public static MineralMetal metal(String name, int tier){
 		int points = Material.getPoints(tier);
 		int red;
@@ -127,14 +133,12 @@ public class Generate {
 			red = c3;
 		}
 			
-		long ammount=0;//TODO Ammount gen
-		MineralMetal metal = new MineralMetal(name, tier, true,ammount, strength, magic, red, green, blue, conductivity);
-		RegMaterial.registerMaterial(metal);
+		MineralMetal metal = new MineralMetal(name, tier, true, strength, magic, red, green, blue, conductivity);
+		RegMaterials.register(metal);
 		
 		return metal;
 		
 	}
-	
 	public static PlantCraft plantCraft(String name, int tier){
 		int points = Material.getPoints(tier);
 		
@@ -145,14 +149,12 @@ public class Generate {
 		int strength = randRange(points/4,points);
 		int durability = points-strength;
 		
-		long at=0;//TODO Ammount gen
-		PlantCraft plant = new PlantCraft(name, tier, false,at, ammount, time, strength, wieght, durability);
-		RegMaterial.registerMaterial(plant);
+		PlantCraft plant = new PlantCraft(name, tier, false, ammount, time, strength, wieght, durability);
+		RegMaterials.register(plant);
 		
 		return plant;
 		
 	}
-	
 	public static PlantFood plantFood(String name, int tier){
 		int points = Material.getPoints(tier);
 		
@@ -162,14 +164,12 @@ public class Generate {
 		int nurishment = randRange(points/4,points);
 		int flavor = points-nurishment;
 		
-		long at=0;//TODO Ammount gen
-		PlantFood plant = new PlantFood(name, tier, false,at, ammount, time, nurishment, flavor);
-		RegMaterial.registerMaterial(plant);
+		PlantFood plant = new PlantFood(name, tier, false, ammount, time, nurishment, flavor);
+		RegMaterials.register(plant);
 		
 		return plant;
 		
 	}
-	
 	public static PlantMedical plantMedical(String name, int tier){
 		int points = Material.getPoints(tier);
 		
@@ -184,13 +184,119 @@ public class Generate {
 		
 		int duration = points-(hi+si+sr+hr);
 		
-		long at=0;//TODO Ammount gen
-		PlantMedical plant = new PlantMedical(name, tier, false,at, ammount, time, hi, hr, si, sr, duration);
-		RegMaterial.registerMaterial(plant);
+		PlantMedical plant = new PlantMedical(name, tier, false, ammount, time, hi, hr, si, sr, duration);
+		RegMaterials.register(plant);
 		
 		return plant;
 		
 	}
-	
 	//Material Raw
+	//Planet Gas
+	public static Planet planetGas(String name, int temp, int protection,int water,int air,boolean inhabit,long size){
+		PlanetResources g = new PlanetResources();
+		for(int i = 1; i < size; i++){
+			int indy = randRange(-10,RegMaterials.getReg().getGases().size());
+			g.add(RegMaterials.getReg().getGases().get(indy), 1);
+		}
+		PlanetGas planet = new PlanetGas(name, temp, protection, water, air, inhabit,size, g);
+		RegPlanet.registerPlanet(planet);
+		return planet;
+	}
+	public static Planet planetGas(String name, int temp, int protection,int water,int air,boolean inhabit){
+		return planetGas(name, temp, protection, water, air, inhabit, randRange(0,90000));
+	}
+	public static Planet planetGas(String name, boolean inhabit){
+		return planetGas(name, randRange(0,6), randRange(0,100), randRange(0,3), randRange(0,30), inhabit, randRange(0,90000));
+	}
+	//Planet Gas
+	//Planet Molten
+	public static Planet planetMolten(String name, int temp, int protection,int water,int air,boolean inhabit,long size){
+		PlanetResources g = new PlanetResources();
+		for(int i = 1; i < size; i++){
+			int indy = randRange(-10,RegMaterials.getReg().getMinerals().size());
+			g.add(RegMaterials.getReg().getMinerals().get(indy), 1);
+		}
+		PlanetMolten planet = new PlanetMolten(name, temp, protection, water, air, inhabit,size, g);
+		RegPlanet.registerPlanet(planet);
+		return planet;
+	}
+	public static Planet planetMolten(String name, int temp, int protection,int water,int air,boolean inhabit){
+		return planetMolten(name, temp, protection, water, air, inhabit, randRange(0,90000));
+	}
+	public static Planet planetMolten(String name, boolean inhabit){
+		return planetMolten(name, randRange(4,5), randRange(0,100), randRange(0,3), randRange(0,30), inhabit, randRange(0,90000));
+	}
+	//Planet Molten
+	//Planet Ocean
+	public static Planet planetOcean(String name, int temp, int protection,int water,int air,boolean inhabit,long size){
+		PlanetResources g = new PlanetResources();
+		for(int i = 1; i < size; i++){
+			int indy = randRange(-50,RegMaterials.getReg().getRawMaterials().size());
+			g.add(RegMaterials.getReg().getRawMaterials().get(indy), 1);
+		}
+		PlanetOcean planet = new PlanetOcean(name, temp, protection, water, air, inhabit,size, g);
+		RegPlanet.registerPlanet(planet);
+		return planet;
+	}
+	public static Planet planetOcean(String name, int temp, int protection,int water,int air,boolean inhabit){
+		return planetOcean(name, temp, protection, water, air, inhabit, randRange(0,90000));
+	}
+	public static Planet planetOcean(String name, boolean inhabit){
+		return planetOcean(name, randRange(2,4), randRange(0,100), randRange(0,3), randRange(0,30), inhabit, randRange(0,90000));
+	}
+	//Planet Ocean
+	//Planet Ice
+	public static Planet planetIce(String name, int temp, int protection,int water,int air,boolean inhabit,long size){
+		PlanetResources g = new PlanetResources();
+		for(int i = 1; i < size; i++){
+			int indy = randRange(-100,RegMaterials.getReg().getRawMaterials().size());
+			g.add(RegMaterials.getReg().getRawMaterials().get(indy), 1);
+		}
+		PlanetIce planet = new PlanetIce(name, temp, protection, water, air, inhabit,size, g);
+		RegPlanet.registerPlanet(planet);
+		return planet;
+	}
+	public static Planet planetIce(String name, int temp, int protection,int water,int air,boolean inhabit){
+		return planetIce(name, temp, protection, water, air, inhabit, randRange(0,90000));
+	}
+	public static Planet planetIce(String name, boolean inhabit){
+		return planetIce(name, randRange(0,2), randRange(0,100), randRange(0,3), randRange(0,30), inhabit, randRange(0,90000));
+	}
+	//Planet Ice
+	//Planet Mineral
+	public static Planet planetMineral(String name, int temp, int protection,int water,int air,boolean inhabit,long size){
+		PlanetResources g = new PlanetResources();
+		for(int i = 1; i < size; i++){
+			int indy = randRange(-10,RegMaterials.getReg().getMinerals().size());
+			g.add(RegMaterials.getReg().getMinerals().get(indy), 1);
+		}
+		PlanetMineral planet = new PlanetMineral(name, temp, protection, water, air, inhabit,size, g);
+		RegPlanet.registerPlanet(planet);
+		return planet;
+	}
+	public static Planet planetMineral(String name, int temp, int protection,int water,int air,boolean inhabit){
+		return planetMineral(name, temp, protection, water, air, inhabit, randRange(0,90000));
+	}
+	public static Planet planetMineral(String name, boolean inhabit){
+		return planetMineral(name, randRange(0,6), randRange(0,100), randRange(0,3), randRange(0,30), inhabit, randRange(0,90000));
+	}
+	//Planet Mineral
+	//Planet Terra
+	public static Planet planetTerra(String name, int temp, int protection,int air,boolean inhabit,long size){
+		PlanetResources g = new PlanetResources();
+		for(int i = 1; i < size; i++){
+			int indy = randRange(-10,RegMaterials.getReg().getMinerals().size());
+			g.add(RegMaterials.getReg().getMinerals().get(indy), 1);
+		}
+		PlanetTerra planet = new PlanetTerra(name, temp, protection, air, inhabit,size, g);
+		RegPlanet.registerPlanet(planet);
+		return planet;
+	}
+	public static Planet planetTerra(String name, int temp, int protection,int air,boolean inhabit){
+		return planetTerra(name, temp, protection, air, inhabit, randRange(0,90000));
+	}
+	public static Planet planetTerra(String name, boolean inhabit){
+		return planetTerra(name, randRange(2,4), randRange(70,100), randRange(20,30), inhabit, randRange(0,90000));
+	}
+	//Planet Terra
 }

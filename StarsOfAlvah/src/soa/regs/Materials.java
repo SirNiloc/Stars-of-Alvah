@@ -14,31 +14,31 @@ import soa.item.material.raw.plant.PlantFood;
 import soa.item.material.raw.plant.PlantMedical;
 import soa.item.material.refined.MaterialRefined;
 
-public class RegMaterial {
+public class Materials {
 
-	private static ArrayList<Material> materials = new ArrayList<Material>();
+	private ArrayList<Material> materials = new ArrayList<Material>();
 	
-	private static ArrayList<MaterialRaw> raw = new ArrayList<MaterialRaw>();
-	private static ArrayList<Mineral> minerals = new ArrayList<Mineral>();
-	private static ArrayList<MineralGem> gems = new ArrayList<MineralGem>();
-	private static ArrayList<MineralMetal> metals = new ArrayList<MineralMetal>();
+	private ArrayList<MaterialRaw> raw = new ArrayList<MaterialRaw>();
+	private ArrayList<Mineral> minerals = new ArrayList<Mineral>();
+	private ArrayList<MineralGem> gems = new ArrayList<MineralGem>();
+	private ArrayList<MineralMetal> metals = new ArrayList<MineralMetal>();
 	
-	private static ArrayList<Gas> gas = new ArrayList<Gas>();
+	private ArrayList<Gas> gas = new ArrayList<Gas>();
 	
-	private static ArrayList<Plant> plants = new ArrayList<Plant>();
-	private static ArrayList<PlantCraft> plantsCraft = new ArrayList<PlantCraft>();
-	private static ArrayList<PlantFood> plantsFood = new ArrayList<PlantFood>();
-	private static ArrayList<PlantMedical> plantsMedical = new ArrayList<PlantMedical>();
+	private ArrayList<Plant> plants = new ArrayList<Plant>();
+	private ArrayList<PlantCraft> plantsCraft = new ArrayList<PlantCraft>();
+	private ArrayList<PlantFood> plantsFood = new ArrayList<PlantFood>();
+	private ArrayList<PlantMedical> plantsMedical = new ArrayList<PlantMedical>();
 	
-	private static ArrayList<MaterialRefined> refined = new ArrayList<MaterialRefined>();
+	private ArrayList<MaterialRefined> refined = new ArrayList<MaterialRefined>();
 	
 	
 
-	public static ArrayList<Material> getMaterials(){
+	public ArrayList<Material> getMaterials(){
 		return materials;
 	}
 	
-	public static void registerMaterial(Material r){
+	public void add(Material r,long ammount){
 		if(materials.contains(r));
 		else materials.add(r);
 		
@@ -81,40 +81,40 @@ public class RegMaterial {
 		}
 	}
 	
-	public static ArrayList<MaterialRaw> getRawMaterials(){
+	public ArrayList<MaterialRaw> getRawMaterials(){
 		return raw;
 	}
 	
-	public static ArrayList<Gas> getGases(){
+	public ArrayList<Gas> getGases(){
 		return gas;
 	}
 	
-	public static ArrayList<Mineral> getMinerals(){
+	public ArrayList<Mineral> getMinerals(){
 		return minerals;
 	}
 	
-	public static ArrayList<MineralGem> getGems(){
+	public ArrayList<MineralGem> getGems(){
 		return gems;
 	}
 	
-	public static ArrayList<MineralMetal> getMetals(){
+	public ArrayList<MineralMetal> getMetals(){
 		return metals;
 	}
 
-	public static ArrayList<Plant> getPlants(){
+	public ArrayList<Plant> getPlants(){
 		return plants;
 	}
-	public static ArrayList<PlantMedical> getMedicalPlants(){
+	public ArrayList<PlantMedical> getMedicalPlants(){
 		return plantsMedical;
 	}
-	public static ArrayList<PlantCraft> getCraftingPlants(){
+	public ArrayList<PlantCraft> getCraftingPlants(){
 		return plantsCraft;
 	}
-	public static ArrayList<PlantFood> getFoodPlants(){
+	public ArrayList<PlantFood> getFoodPlants(){
 		return plantsFood;
 	}
 	
-	public static ArrayList<MaterialRefined> getRefinedMaterials(){
+	public ArrayList<MaterialRefined> getRefinedMaterials(){
 		return refined;
 	}
 }

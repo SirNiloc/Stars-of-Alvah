@@ -1,9 +1,5 @@
 package soa.space.planet;
 
-import java.util.ArrayList;
-
-import soa.item.material.Material;
-
 public class Planet {
 
 	private String name = "EMPTY";
@@ -14,8 +10,10 @@ public class Planet {
 	private int radiationProtection = 0; 	//(0 - 100%)
 	private int water = 0;					//(none = 0 solid = 1 liquid = 2 gas = 3)
 	private int oxygen = 0;					//(0-30)
+	
+	private long size = 0;					//(0-? earth = 8000)
 
-	private ArrayList<Material> resources = new ArrayList<Material>();
+	private PlanetResources resources = new PlanetResources();
 
 	
 	private String info = "EMPTY";
@@ -23,24 +21,33 @@ public class Planet {
 	
 	public Planet(boolean e){}
 	
-	public Planet(String n, int t, int p, int w, int o, boolean i){
+	public Planet(String n, int t, int p, int w, int o, boolean i,long s){
 		name = n;
 		temp = t;					//(low 0-6 high)
-		setRad(p); 	//(0-100%)
+		setRad(p); 	//(0-100%)randRange(0,90000)
 		water = w;
 		setOxygen(o);
-		
+		setSize(s);
 		inhabited = i;
 		setPlanetInfo();
 	}
 	
-	public Planet(String n, int t, int p, int w, int o, boolean i,ArrayList<Material> m){
+	private void setSize(long s) {
+		if(s<0)size=0;
+		else size=s;
+	}
+	
+	public long getSize(){
+		return size;
+	}
+
+	public Planet(String n, int t, int p, int w, int o, boolean i,long s,PlanetResources m){
 		name = n;
 		setTemp(t);					//(low 0-6 high)
 		setRad(p); 	//(0-100%)
 		water = w;
 		setOxygen(o);
-		
+		setSize(s);
 		resources = m;
 		
 		inhabited = i;
@@ -53,11 +60,11 @@ public class Planet {
 		else temp=t;
 	}
 
-	public ArrayList<Material> getResources(){
+	public PlanetResources getResources(){
 		return resources;
 	}
 	
-	public void setResources(ArrayList<Material> m){
+	public void setResources(PlanetResources m){
 		resources = m;
 	}
 	
