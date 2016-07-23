@@ -153,7 +153,8 @@ public class Planet {
 		"Protection Rank: "+radiationProtection+"%\n"+
 		"Water: "+getWater()+"\n"+
 		"Air Rating: "+getAirRate()+"\n"+
-		"X: "+getCoordX()+" Y: "+getCoordY()+" Z: "+getCoordZ()+"\n";
+		"X: "+getCoordX()+" Y: "+getCoordY()+" Z: "+getCoordZ()+"\n"
+		+getResources().toString();
 	}
 	
 	private int getTemp() {

@@ -10,7 +10,6 @@ public class RegPlanetActions {
 
 	public RegPlanetActions(){
 		registerPlanetAction(new PlanetAction("No Action"));
-		registerPlanetAction(new PlanetAction("Travel"));
 	}
 	
 	public ArrayList<PlanetAction> getPlanetActions(){
