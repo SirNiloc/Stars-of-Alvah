@@ -1,5 +1,9 @@
 package soa;
 
 public class SOA {
-//test1
+
+	public static void main(String[] args) {
+
+
+	}
 }

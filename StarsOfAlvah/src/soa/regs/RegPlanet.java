@@ -12,7 +12,7 @@ public class RegPlanet {
 		return planets;
 	}
 	
-	public void registerPlanet(Planet r){
+	public static void registerPlanet(Planet r){
 		if(planets.contains(r));
 		else planets.add(r);
 	}
