@@ -6,22 +6,17 @@ public class Material {
 	private int tier;
 	
 	private int id = 0;
-	private static int idLast = -1;
 		
 	public Material(String n, int t){
 		name = n;
 		tier = t;
-		id = getNextID();
 	}
 	
 	public int getID(){
 		return id;
 	}
-	public static int getCurrentID(){
-		return idLast;
-	}
-	public static int getNextID(){
-		return idLast+1;
+	public void setID(int i){
+		id = i;
 	}
 	
 	public String getName(){

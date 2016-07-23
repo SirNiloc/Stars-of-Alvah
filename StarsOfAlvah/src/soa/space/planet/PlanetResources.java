@@ -1,13 +1,14 @@
 package soa.space.planet;
 
 import soa.item.material.Material;
+import soa.regs.RegMaterials;
 
 public class PlanetResources{
 	
 	long[] inventory;
 	
 	public PlanetResources(){
-		inventory = new long[Material.getCurrentID()];
+		inventory = new long[RegMaterials.getCurrentID()+1];
 		
 	}
 

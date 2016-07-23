@@ -2,6 +2,7 @@ package soa.util;
 
 import soa.entity._00Species;
 import soa.item.material.Material;
+import soa.item.material.raw.gas.Gas;
 import soa.item.material.raw.mineral.MineralGem;
 import soa.item.material.raw.mineral.MineralMetal;
 import soa.item.material.raw.plant.PlantCraft;
@@ -20,7 +21,12 @@ import soa.space.planet.types.solid.PlanetIce;
 import soa.space.planet.types.solid.PlanetMineral;
 
 public class Generate {
-	
+	static RegMaterials regMat = new RegMaterials();
+	//Reg
+	public static void setRegMaterials(RegMaterials r){
+		regMat = r;
+	}
+	//Reg
 	//Number
 	public static int randRange(int min, int max){
 		return min + (int)(Math.random() * ((max - min) + 1));
@@ -46,6 +52,22 @@ public class Generate {
 		return race;
 	}
 	//Race
+	//Material Gas
+	public static Gas gas(String name, int tier) {
+		int points = Material.getPoints(tier);
+		
+		int mind = randRange(0,points/3);
+		int body = randRange(0,points/3);
+		int spirit = randRange(0,points/3);
+		
+		int energy = randRange(0,points-(mind+body+spirit));
+		
+		Gas gas = new Gas(name, tier, false, energy, mind, body, spirit);
+		RegMaterials.register(gas);
+		
+		return gas;
+	}
+	//Material Gas
 	//Material Raw
 	public static MineralGem gem(String name, int tier){
 		int points = Material.getPoints(tier);
@@ -195,8 +217,11 @@ public class Generate {
 	public static Planet planetGas(String name, int temp, int protection,int water,int air,boolean inhabit,long size){
 		PlanetResources g = new PlanetResources();
 		for(int i = 1; i < size; i++){
-			int indy = randRange(-10,RegMaterials.getReg().getGases().size());
-			g.add(RegMaterials.getReg().getGases().get(indy), 1);
+			int indy = randRange(-10,RegMaterials.getReg().getGases().size()-1);
+			try{
+				g.add(RegMaterials.getReg().getGases().get(indy), 1);
+			}catch(ArrayIndexOutOfBoundsException e){}
+			catch(IndexOutOfBoundsException e){}
 		}
 		PlanetGas planet = new PlanetGas(name, temp, protection, water, air, inhabit,size, g);
 		RegPlanet.registerPlanet(planet);
@@ -213,8 +238,12 @@ public class Generate {
 	public static Planet planetMolten(String name, int temp, int protection,int water,int air,boolean inhabit,long size){
 		PlanetResources g = new PlanetResources();
 		for(int i = 1; i < size; i++){
-			int indy = randRange(-10,RegMaterials.getReg().getMinerals().size());
-			g.add(RegMaterials.getReg().getMinerals().get(indy), 1);
+			int indy = randRange(-10,RegMaterials.getReg().getMinerals().size()-1);
+			try{
+				g.add(RegMaterials.getReg().getMinerals().get(indy), 1);
+			}catch(ArrayIndexOutOfBoundsException e){
+				
+			}
 		}
 		PlanetMolten planet = new PlanetMolten(name, temp, protection, water, air, inhabit,size, g);
 		RegPlanet.registerPlanet(planet);
@@ -231,8 +260,12 @@ public class Generate {
 	public static Planet planetOcean(String name, int temp, int protection,int water,int air,boolean inhabit,long size){
 		PlanetResources g = new PlanetResources();
 		for(int i = 1; i < size; i++){
-			int indy = randRange(-50,RegMaterials.getReg().getRawMaterials().size());
-			g.add(RegMaterials.getReg().getRawMaterials().get(indy), 1);
+			int indy = randRange(-50,RegMaterials.getReg().getRawMaterials().size()-1);
+			try{
+				g.add(RegMaterials.getReg().getRawMaterials().get(indy), 1);
+			}catch(ArrayIndexOutOfBoundsException e){
+				
+			}
 		}
 		PlanetOcean planet = new PlanetOcean(name, temp, protection, water, air, inhabit,size, g);
 		RegPlanet.registerPlanet(planet);
@@ -249,8 +282,12 @@ public class Generate {
 	public static Planet planetIce(String name, int temp, int protection,int water,int air,boolean inhabit,long size){
 		PlanetResources g = new PlanetResources();
 		for(int i = 1; i < size; i++){
-			int indy = randRange(-100,RegMaterials.getReg().getRawMaterials().size());
-			g.add(RegMaterials.getReg().getRawMaterials().get(indy), 1);
+			int indy = randRange(-100,RegMaterials.getReg().getRawMaterials().size()-1);
+			try{
+				g.add(RegMaterials.getReg().getRawMaterials().get(indy), 1);
+			}catch(ArrayIndexOutOfBoundsException e){
+				
+			}
 		}
 		PlanetIce planet = new PlanetIce(name, temp, protection, water, air, inhabit,size, g);
 		RegPlanet.registerPlanet(planet);
@@ -267,8 +304,12 @@ public class Generate {
 	public static Planet planetMineral(String name, int temp, int protection,int water,int air,boolean inhabit,long size){
 		PlanetResources g = new PlanetResources();
 		for(int i = 1; i < size; i++){
-			int indy = randRange(-10,RegMaterials.getReg().getMinerals().size());
-			g.add(RegMaterials.getReg().getMinerals().get(indy), 1);
+			int indy = randRange(-10,RegMaterials.getReg().getMinerals().size()-1);
+			try{
+				g.add(RegMaterials.getReg().getMinerals().get(indy), 1);
+			}catch(ArrayIndexOutOfBoundsException e){
+				
+			}
 		}
 		PlanetMineral planet = new PlanetMineral(name, temp, protection, water, air, inhabit,size, g);
 		RegPlanet.registerPlanet(planet);
@@ -285,8 +326,12 @@ public class Generate {
 	public static Planet planetTerra(String name, int temp, int protection,int air,boolean inhabit,long size){
 		PlanetResources g = new PlanetResources();
 		for(int i = 1; i < size; i++){
-			int indy = randRange(-10,RegMaterials.getReg().getMinerals().size());
-			g.add(RegMaterials.getReg().getMinerals().get(indy), 1);
+			int indy = randRange(-10,RegMaterials.getReg().getMinerals().size()-1);
+			try{
+				g.add(RegMaterials.getReg().getMinerals().get(indy), 1);
+			}catch(ArrayIndexOutOfBoundsException e){
+				
+			}
 		}
 		PlanetTerra planet = new PlanetTerra(name, temp, protection, air, inhabit,size, g);
 		RegPlanet.registerPlanet(planet);
@@ -299,4 +344,5 @@ public class Generate {
 		return planetTerra(name, randRange(2,4), randRange(70,100), randRange(20,30), inhabit, randRange(0,90000));
 	}
 	//Planet Terra
+	
 }

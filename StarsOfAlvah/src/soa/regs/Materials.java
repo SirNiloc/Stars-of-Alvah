@@ -38,8 +38,8 @@ public class Materials {
 		return materials;
 	}
 	
-	public void add(Material r,long ammount){
-		if(materials.contains(r));
+	public boolean add(Material r,long ammount){
+		if(materials.contains(r)) return false;
 		else materials.add(r);
 		
 		if(r instanceof MaterialRaw){
@@ -79,6 +79,7 @@ public class Materials {
 			if(refined.contains(r));
 			else refined.add((MaterialRefined) r);
 		}
+		return true;
 	}
 	
 	public ArrayList<MaterialRaw> getRawMaterials(){
