@@ -19,8 +19,6 @@ public class Planet {
 	private String info = "EMPTY";
 	//TODO Add Characteristics
 	
-	public Planet(boolean e){}
-	
 	public Planet(String n, int t, int p, int w, int o, boolean i,long s){
 		name = n;
 		temp = t;					//(low 0-6 high)
