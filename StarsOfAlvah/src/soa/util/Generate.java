@@ -19,6 +19,21 @@ import soa.space.planet.types.liquid.PlanetMolten;
 import soa.space.planet.types.liquid.PlanetOcean;
 import soa.space.planet.types.solid.PlanetIce;
 import soa.space.planet.types.solid.PlanetMineral;
+import soa.space.ship.Ship;
+import soa.space.ship.type.ShipType;
+import soa.space.ship.type.combat.Carrier;
+import soa.space.ship.type.combat.Countermeasure;
+import soa.space.ship.type.combat.Cruiser;
+import soa.space.ship.type.combat.Destroyer;
+import soa.space.ship.type.combat.Frigate;
+import soa.space.ship.type.combat.Stealth;
+import soa.space.ship.type.combat.Striker;
+import soa.space.ship.type.econ.Cargo;
+import soa.space.ship.type.econ.Extractor;
+import soa.space.ship.type.logistics.Transport;
+import soa.space.ship.type.science.Archaeology;
+import soa.space.ship.type.science.Solar;
+import soa.space.ship.type.science.Trapper;
 
 public class Generate {
 	static RegMaterials regMat = new RegMaterials();
@@ -28,23 +43,26 @@ public class Generate {
 	}
 	//Reg
 	//Number
-	public static int randRange(int min, int max){
-		return min + (int)(Math.random() * ((max - min) + 1));
+	public static int randRangeInt(int min, int max){
+		return (int) randRangeDouble(min,max);
 	}
+	public static double randRangeDouble(double min, double max){
+		return min + (double)(Math.random() * ((max - min) + 1));
+	}	
 	//Number
 	//Race
 	public static _00Species race(String species){
-		_00Species race = new _00Species(species, randRange(0,27));
+		_00Species race = new _00Species(species, randRangeInt(0,27));
 		RegRace.registerRace(race);
 		return race;
 	}
 	public static _00Species race(String species,String family){
-		_00Species race =  new _00Species(species, randRange(0,27), family);
+		_00Species race =  new _00Species(species, randRangeInt(0,27), family);
 		RegRace.registerRace(race);
 		return race;
 	}
 	public static _00Species race(String species,String family, String genus){
-		return race(species,randRange(0,27),family,genus);
+		return race(species,randRangeInt(0,27),family,genus);
 	}
 	public static _00Species race(String species,int c, String family, String genus){
 		_00Species race = new _00Species(species, c, family, genus);
@@ -56,11 +74,11 @@ public class Generate {
 	public static Gas gas(String name, int tier) {
 		int points = Material.getPoints(tier);
 		
-		int mind = randRange(0,points/3);
-		int body = randRange(0,points/3);
-		int spirit = randRange(0,points/3);
+		int mind = randRangeInt(0,points/3);
+		int body = randRangeInt(0,points/3);
+		int spirit = randRangeInt(0,points/3);
 		
-		int energy = randRange(0,points-(mind+body+spirit));
+		int energy = randRangeInt(0,points-(mind+body+spirit));
 		
 		Gas gas = new Gas(name, tier, false, energy, mind, body, spirit);
 		RegMaterials.register(gas);
@@ -74,15 +92,15 @@ public class Generate {
 		int red;
 		int green;
 		int blue;
-		int alpha = randRange(0,254);
-		int strength = randRange(10,points);
+		int alpha = randRangeInt(0,254);
+		int strength = randRangeInt(10,points);
 		int magic = points-strength;
 		
-		int c1 = randRange(170,255);
-		int c2 = randRange(85,170);
-		int c3 = randRange(0,85);
+		int c1 = randRangeInt(170,255);
+		int c2 = randRangeInt(85,170);
+		int c3 = randRangeInt(0,85);
 		
-		int randy = randRange(0,5);
+		int randy = randRangeInt(0,5);
 		if(randy == 1){
 			red = c1;
 			green = c2;
@@ -120,15 +138,15 @@ public class Generate {
 		int red;
 		int green;
 		int blue;
-		int strength = randRange(10,points);
-		int conductivity = randRange(0,points-strength);
+		int strength = randRangeInt(10,points);
+		int conductivity = randRangeInt(0,points-strength);
 		int magic = (points-strength)-conductivity;
 		
-		int c1 = randRange(170,255);
-		int c2 = randRange(85,170);
-		int c3 = randRange(0,85);
+		int c1 = randRangeInt(170,255);
+		int c2 = randRangeInt(85,170);
+		int c3 = randRangeInt(0,85);
 		
-		int randy = randRange(0,5);
+		int randy = randRangeInt(0,5);
 		if(randy == 1){
 			red = c1;
 			green = c2;
@@ -164,11 +182,11 @@ public class Generate {
 	public static PlantCraft plantCraft(String name, int tier){
 		int points = Material.getPoints(tier);
 		
-		int ammount = randRange(points/4,points);
-		int wieght = randRange(1,ammount);
+		int ammount = randRangeInt(points/4,points);
+		int wieght = randRangeInt(1,ammount);
 		int time = (points-ammount)-wieght;
 		
-		int strength = randRange(points/4,points);
+		int strength = randRangeInt(points/4,points);
 		int durability = points-strength;
 		
 		PlantCraft plant = new PlantCraft(name, tier, false, ammount, time, strength, wieght, durability);
@@ -180,10 +198,10 @@ public class Generate {
 	public static PlantFood plantFood(String name, int tier){
 		int points = Material.getPoints(tier);
 		
-		int ammount = randRange(points/4,points);
+		int ammount = randRangeInt(points/4,points);
 		int time = (points-ammount);
 		
-		int nurishment = randRange(points/4,points);
+		int nurishment = randRangeInt(points/4,points);
 		int flavor = points-nurishment;
 		
 		PlantFood plant = new PlantFood(name, tier, false, ammount, time, nurishment, flavor);
@@ -195,14 +213,14 @@ public class Generate {
 	public static PlantMedical plantMedical(String name, int tier){
 		int points = Material.getPoints(tier);
 		
-		int ammount = randRange(points/4,points);
+		int ammount = randRangeInt(points/4,points);
 		int time = (points-ammount);
 
-		int hi = randRange(0,points/3);
-		int si = randRange(0,points/3);
+		int hi = randRangeInt(0,points/3);
+		int si = randRangeInt(0,points/3);
 		
-		int sr = randRange(0,points-(hi+si));
-		int hr = randRange(0,points-(hi+si+sr));
+		int sr = randRangeInt(0,points-(hi+si));
+		int hr = randRangeInt(0,points-(hi+si+sr));
 		
 		int duration = points-(hi+si+sr+hr);
 		
@@ -217,7 +235,7 @@ public class Generate {
 	public static Planet planetGas(String name, int temp, int protection,int water,int air,boolean inhabit,long size){
 		PlanetResources g = new PlanetResources();
 		for(int i = 1; i < size; i++){
-			int indy = randRange(-10,RegMaterials.getReg().getGases().size()-1);
+			int indy = randRangeInt(-10,RegMaterials.getReg().getGases().size()-1);
 			try{
 				g.add(RegMaterials.getReg().getGases().get(indy), 1);
 			}catch(ArrayIndexOutOfBoundsException e){}
@@ -228,17 +246,17 @@ public class Generate {
 		return planet;
 	}
 	public static Planet planetGas(String name, int temp, int protection,int water,int air,boolean inhabit){
-		return planetGas(name, temp, protection, water, air, inhabit, randRange(0,90000));
+		return planetGas(name, temp, protection, water, air, inhabit, randRangeInt(0,90000));
 	}
 	public static Planet planetGas(String name, boolean inhabit){
-		return planetGas(name, randRange(0,6), randRange(0,100), randRange(0,3), randRange(0,30), inhabit, randRange(0,90000));
+		return planetGas(name, randRangeInt(0,6), randRangeInt(0,100), randRangeInt(0,3), randRangeInt(0,30), inhabit, randRangeInt(0,90000));
 	}
 	//Planet Gas
 	//Planet Molten
 	public static Planet planetMolten(String name, int temp, int protection,int water,int air,boolean inhabit,long size){
 		PlanetResources g = new PlanetResources();
 		for(int i = 1; i < size; i++){
-			int indy = randRange(-10,RegMaterials.getReg().getMinerals().size()-1);
+			int indy = randRangeInt(-10,RegMaterials.getReg().getMinerals().size()-1);
 			try{
 				g.add(RegMaterials.getReg().getMinerals().get(indy), 1);
 			}catch(ArrayIndexOutOfBoundsException e){
@@ -250,17 +268,17 @@ public class Generate {
 		return planet;
 	}
 	public static Planet planetMolten(String name, int temp, int protection,int water,int air,boolean inhabit){
-		return planetMolten(name, temp, protection, water, air, inhabit, randRange(0,90000));
+		return planetMolten(name, temp, protection, water, air, inhabit, randRangeInt(0,90000));
 	}
 	public static Planet planetMolten(String name, boolean inhabit){
-		return planetMolten(name, randRange(4,5), randRange(0,100), randRange(0,3), randRange(0,30), inhabit, randRange(0,90000));
+		return planetMolten(name, randRangeInt(4,5), randRangeInt(0,100), randRangeInt(0,3), randRangeInt(0,30), inhabit, randRangeInt(0,90000));
 	}
 	//Planet Molten
 	//Planet Ocean
 	public static Planet planetOcean(String name, int temp, int protection,int water,int air,boolean inhabit,long size){
 		PlanetResources g = new PlanetResources();
 		for(int i = 1; i < size; i++){
-			int indy = randRange(-50,RegMaterials.getReg().getRawMaterials().size()-1);
+			int indy = randRangeInt(-50,RegMaterials.getReg().getRawMaterials().size()-1);
 			try{
 				g.add(RegMaterials.getReg().getRawMaterials().get(indy), 1);
 			}catch(ArrayIndexOutOfBoundsException e){
@@ -272,17 +290,17 @@ public class Generate {
 		return planet;
 	}
 	public static Planet planetOcean(String name, int temp, int protection,int water,int air,boolean inhabit){
-		return planetOcean(name, temp, protection, water, air, inhabit, randRange(0,90000));
+		return planetOcean(name, temp, protection, water, air, inhabit, randRangeInt(0,90000));
 	}
 	public static Planet planetOcean(String name, boolean inhabit){
-		return planetOcean(name, randRange(2,4), randRange(0,100), randRange(0,3), randRange(0,30), inhabit, randRange(0,90000));
+		return planetOcean(name, randRangeInt(2,4), randRangeInt(0,100), randRangeInt(0,3), randRangeInt(0,30), inhabit, randRangeInt(0,90000));
 	}
 	//Planet Ocean
 	//Planet Ice
 	public static Planet planetIce(String name, int temp, int protection,int water,int air,boolean inhabit,long size){
 		PlanetResources g = new PlanetResources();
 		for(int i = 1; i < size; i++){
-			int indy = randRange(-100,RegMaterials.getReg().getRawMaterials().size()-1);
+			int indy = randRangeInt(-100,RegMaterials.getReg().getRawMaterials().size()-1);
 			try{
 				g.add(RegMaterials.getReg().getRawMaterials().get(indy), 1);
 			}catch(ArrayIndexOutOfBoundsException e){
@@ -294,17 +312,17 @@ public class Generate {
 		return planet;
 	}
 	public static Planet planetIce(String name, int temp, int protection,int water,int air,boolean inhabit){
-		return planetIce(name, temp, protection, water, air, inhabit, randRange(0,90000));
+		return planetIce(name, temp, protection, water, air, inhabit, randRangeInt(0,90000));
 	}
 	public static Planet planetIce(String name, boolean inhabit){
-		return planetIce(name, randRange(0,2), randRange(0,100), randRange(0,3), randRange(0,30), inhabit, randRange(0,90000));
+		return planetIce(name, randRangeInt(0,2), randRangeInt(0,100), randRangeInt(0,3), randRangeInt(0,30), inhabit, randRangeInt(0,90000));
 	}
 	//Planet Ice
 	//Planet Mineral
 	public static Planet planetMineral(String name, int temp, int protection,int water,int air,boolean inhabit,long size){
 		PlanetResources g = new PlanetResources();
 		for(int i = 1; i < size; i++){
-			int indy = randRange(-10,RegMaterials.getReg().getMinerals().size()-1);
+			int indy = randRangeInt(-10,RegMaterials.getReg().getMinerals().size()-1);
 			try{
 				g.add(RegMaterials.getReg().getMinerals().get(indy), 1);
 			}catch(ArrayIndexOutOfBoundsException e){
@@ -316,17 +334,17 @@ public class Generate {
 		return planet;
 	}
 	public static Planet planetMineral(String name, int temp, int protection,int water,int air,boolean inhabit){
-		return planetMineral(name, temp, protection, water, air, inhabit, randRange(0,90000));
+		return planetMineral(name, temp, protection, water, air, inhabit, randRangeInt(0,90000));
 	}
 	public static Planet planetMineral(String name, boolean inhabit){
-		return planetMineral(name, randRange(0,6), randRange(0,100), randRange(0,3), randRange(0,30), inhabit, randRange(0,90000));
+		return planetMineral(name, randRangeInt(0,6), randRangeInt(0,100), randRangeInt(0,3), randRangeInt(0,30), inhabit, randRangeInt(0,90000));
 	}
 	//Planet Mineral
 	//Planet Terra
 	public static Planet planetTerra(String name, int temp, int protection,int air,boolean inhabit,long size){
 		PlanetResources g = new PlanetResources();
 		for(int i = 1; i < size; i++){
-			int indy = randRange(-10,RegMaterials.getReg().getMinerals().size()-1);
+			int indy = randRangeInt(-10,RegMaterials.getReg().getMinerals().size()-1);
 			try{
 				g.add(RegMaterials.getReg().getMinerals().get(indy), 1);
 			}catch(ArrayIndexOutOfBoundsException e){
@@ -338,11 +356,220 @@ public class Generate {
 		return planet;
 	}
 	public static Planet planetTerra(String name, int temp, int protection,int air,boolean inhabit){
-		return planetTerra(name, temp, protection, air, inhabit, randRange(0,90000));
+		return planetTerra(name, temp, protection, air, inhabit, randRangeInt(0,90000));
 	}
 	public static Planet planetTerra(String name, boolean inhabit){
-		return planetTerra(name, randRange(2,4), randRange(70,100), randRange(20,30), inhabit, randRange(0,90000));
+		return planetTerra(name, randRangeInt(2,4), randRangeInt(70,100), randRangeInt(20,30), inhabit, randRangeInt(0,90000));
 	}
 	//Planet Terra
+	//Ship
+	public static Ship ship(String name, ShipType type, int t){
+		int tier = t;
+		if(t < 1) tier = 1;
+		double hull = randRangeDouble(1,100);
+		int crew = randRangeInt(1,100);
+		double shield = randRangeDouble(1,100);
+		
+		
+		return(new Ship(name,type,tier, hull, shield, -1, -1, 100, crew, 0, 0, 0));
+	}
+	public static Ship ship(String name, String className, int t){
+		int tier = t;
+		if(t < 1) tier = 1;
+		double hull = randRangeDouble(1,100);
+		int crew = randRangeInt(1,100);
+		double shield = randRangeDouble(1,100);
+		
+		int tt = randRangeInt(0,13);
+		
+		ShipType type;
+		
+		if(tt == 0) type = solar(className);
+		else if(tt == 1) type = transport(className);
+		else if(tt == 2) type = carrier(className);
+		else if(tt == 3) type = defense(className);
+		else if(tt == 4) type = cruiser(className);
+		else if(tt == 5) type = destroyer(className);
+		else if(tt == 6) type = frigate(className);
+		else if(tt == 7) type = stealth(className);
+		else if(tt == 8) type = striker(className);
+		else if(tt == 9) type = cargo(className);
+		else if(tt == 10) type = extractor(className);
+		else if(tt == 11) type = trapper(className);
+		else if(tt == 12) type = archaeology(className);
+		else type = shipClass(className);
+		
+		
+		return(new Ship(name,type,tier, hull, shield, -1, -1, 100, crew, 0, 0, 0));
+	}
+	//Ship
+	//Ship Type
+	public static ShipType shipClass(String name){
+		int h = randRangeInt(1,60);
+		int log = randRangeInt(1,60);
+		int econ = randRangeInt(1,60);
+		int com = randRangeInt(1,60);
+		int sci = randRangeInt(1,60);
+		int speed = randRangeInt(1,60);
+		int s = randRangeInt(1,60);
+		
+		return new ShipType(name, h, s, speed, sci, com, econ, log);
+	}
 	
+	public static Transport transport(String name){
+		int h = randRangeInt(1,30);
+		int log = randRangeInt(1,230);
+		int econ = randRangeInt(1,30);
+		int com = randRangeInt(1,30);
+		int sci = randRangeInt(1,20);
+		int speed = randRangeInt(1,230);
+		int s = randRangeInt(1,30);
+		
+		return new Transport(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Carrier carrier(String name){
+		int h = randRangeInt(1,150);
+		int log = randRangeInt(1,100);
+		int econ = randRangeInt(1,10);
+		int com = randRangeInt(1,200);
+		int sci = randRangeInt(1,10);
+		int speed = randRangeInt(1,10);
+		int s = randRangeInt(1,130);
+		
+		return new Carrier(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Countermeasure defense(String name){
+		int h = randRangeInt(1,150);
+		int log = randRangeInt(1,10);
+		int econ = randRangeInt(1,10);
+		int com = randRangeInt(1,170);
+		int sci = randRangeInt(1,10);
+		int speed = randRangeInt(1,100);
+		int s = randRangeInt(1,150);
+		
+		return new Countermeasure(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Cruiser cruiser(String name){
+		int h = randRangeInt(1,70);
+		int log = randRangeInt(1,50);
+		int econ = randRangeInt(1,10);
+		int com = randRangeInt(1,370);
+		int sci = randRangeInt(1,10);
+		int speed = randRangeInt(1,50);
+		int s = randRangeInt(1,40);
+		
+		return new Cruiser(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Destroyer destroyer(String name){
+		int h = randRangeInt(1,140);
+		int log = randRangeInt(1,40);
+		int econ = randRangeInt(1,10);
+		int com = randRangeInt(1,200);
+		int sci = randRangeInt(1,10);
+		int speed = randRangeInt(1,50);
+		int s = randRangeInt(1,150);
+		
+		return new Destroyer(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Frigate frigate(String name){
+		int h = randRangeInt(1,100);
+		int log = randRangeInt(1,40);
+		int econ = randRangeInt(1,40);
+		int com = randRangeInt(1,100);
+		int sci = randRangeInt(1,10);
+		int speed = randRangeInt(1,220);
+		int s = randRangeInt(1,100);
+		
+		return new Frigate(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Stealth stealth(String name){
+		int h = randRangeInt(1,10);
+		int log = randRangeInt(1,50);
+		int econ = randRangeInt(1,50);
+		int com = randRangeInt(1,230);
+		int sci = randRangeInt(1,10);
+		int speed = randRangeInt(1,200);
+		int s = randRangeInt(1,50);
+		
+		return new Stealth(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Striker striker(String name){
+		int h = randRangeInt(1,20);
+		int log = randRangeInt(1,1);
+		int econ = randRangeInt(1,1);
+		int com = randRangeInt(1,200);
+		int sci = randRangeInt(1,1);
+		int speed = randRangeInt(1,280);
+		int s = randRangeInt(1,100);
+		
+		return new Striker(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Cargo cargo(String name){
+		int h = randRangeInt(1,10);
+		int log = randRangeInt(1,90);
+		int econ = randRangeInt(1,300);
+		int com = randRangeInt(1,10);
+		int sci = randRangeInt(1,10);
+		int speed = randRangeInt(1,220);
+		int s = randRangeInt(1,10);
+		
+		return new Cargo(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Extractor extractor(String name){
+		int h = randRangeInt(1,10);
+		int log = randRangeInt(1,90);
+		int econ = randRangeInt(1,300);
+		int com = randRangeInt(1,80);
+		int sci = randRangeInt(1,10);
+		int speed = randRangeInt(1,80);
+		int s = randRangeInt(1,80);
+		
+		return new Extractor(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Trapper trapper(String name){
+		int h = randRangeInt(1,10);
+		int log = randRangeInt(1,150);
+		int econ = randRangeInt(1,150);
+		int com = randRangeInt(1,50);
+		int sci = randRangeInt(1,150);
+		int speed = randRangeInt(1,70);
+		int s = randRangeInt(1,20);
+		
+		return new Trapper(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Archaeology archaeology(String name){
+		int h = randRangeInt(1,10);
+		int log = randRangeInt(1,60);
+		int econ = randRangeInt(1,200);
+		int com = randRangeInt(1,60);
+		int sci = randRangeInt(1,200);
+		int speed = randRangeInt(1,60);
+		int s = randRangeInt(1,10);
+		
+		return new Archaeology(name, h, s, speed, sci, com, econ, log);
+	}
+	
+	public static Solar solar(String name){
+		int h = randRangeInt(1,10);
+		int log = randRangeInt(1,100);
+		int econ = randRangeInt(1,100);
+		int com = randRangeInt(1,20);
+		int sci = randRangeInt(1,240);
+		int speed = randRangeInt(1,100);
+		int s = randRangeInt(1,30);
+		
+		return new Solar(name, h, s, speed, sci, com, econ, log);
+	}
+	//Ship Type
 }

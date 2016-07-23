@@ -59,9 +59,9 @@ public class Planet {
 	}
 	
 	private void setCoords() {
-		x = Generate.randRange(0, 1000);
-		y = Generate.randRange(0, 1000);
-		z = Generate.randRange(0, 1000);
+		x = Generate.randRangeInt(0, 1000);
+		y = Generate.randRangeInt(0, 1000);
+		z = Generate.randRangeInt(0, 1000);
 	}
 
 	private void setSize(long s) {
