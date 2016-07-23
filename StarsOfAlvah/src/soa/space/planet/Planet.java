@@ -1,5 +1,7 @@
 package soa.space.planet;
 
+import soa.util.Generate;
+
 public class Planet {
 
 	private String name = "EMPTY";
@@ -12,6 +14,11 @@ public class Planet {
 	private int oxygen = 0;					//(0-30)
 	
 	private long size = 0;					//(0-? earth = 8000)
+	
+	private long x = 0;
+	private long y = 0;
+	private long z = 0;
+	
 
 	private PlanetResources resources = new PlanetResources();
 
@@ -26,27 +33,22 @@ public class Planet {
 		water = w;
 		checkTempAndWater();
 		
+		setCoords();
+		
 		setOxygen(o);
 		setSize(s);
 		inhabited = i;
 		setPlanetInfo();
 	}
 	
-	private void setSize(long s) {
-		if(s<0)size=0;
-		else size=s;
-	}
-	
-	public long getSize(){
-		return size;
-	}
-
 	public Planet(String n, int t, int p, int w, int o, boolean i,long s,PlanetResources m){
 		name = n;
 		setTemp(t);					//(low 0-6 high)
 		setRad(p); 	//(0-100%)
 		water = w;
 		checkTempAndWater();
+		
+		setCoords();
 		
 		setOxygen(o);
 		setSize(s);
@@ -55,6 +57,33 @@ public class Planet {
 		inhabited = i;
 		setPlanetInfo();
 	}
+	
+	private void setCoords() {
+		x = Generate.randRange(0, 1000);
+		y = Generate.randRange(0, 1000);
+		z = Generate.randRange(0, 1000);
+	}
+
+	private void setSize(long s) {
+		if(s<0)size=0;
+		else size=s;
+	}
+	
+	public long getSize(){
+		return size;
+	}
+	
+	public long getCoordX(){
+		return x;
+	}
+	public long getCoordY(){
+		return y;
+	}
+	public long getCoordZ(){
+		return z;
+	}
+
+	
 	
 	public void setTemp(int t) {
 		if(t<0)temp=0;
@@ -123,7 +152,9 @@ public class Planet {
 		"Temperature Rank: "+getTempString()+"\n"+
 		"Protection Rank: "+radiationProtection+"%\n"+
 		"Water: "+getWater()+"\n"+
-		"Air Rating: "+getAirRate()+"\n";
+		"Air Rating: "+getAirRate()+"\n"+
+		"X: "+getCoordX()+" Y: "+getCoordY()+" Z: "+getCoordZ()+"\n"
+		+getResources().toString();
 	}
 	
 	private int getTemp() {

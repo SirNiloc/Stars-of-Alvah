@@ -2,15 +2,14 @@ package soa.regs;
 
 import java.util.ArrayList;
 
-import soa.space.planet.PlanetAction;
+import soa.space.planet.actions.PlanetAction;
 
 public class RegPlanetActions {
 
 	private static ArrayList<PlanetAction> actions = new ArrayList<PlanetAction>();
 
 	public RegPlanetActions(){
-		registerPlanetAction(new PlanetAction());
-		registerPlanetAction(new PlanetAction("Travel"));
+		registerPlanetAction(new PlanetAction("No Action"));
 	}
 	
 	public ArrayList<PlanetAction> getPlanetActions(){
