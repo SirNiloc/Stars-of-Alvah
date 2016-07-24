@@ -69,10 +69,15 @@ public class DamageType {
 		return damageModEnergy;
 	}
 	
-	public String toString(){
+	public String getName(){
 		String r = "";
 		if(shieldPen)r = "Penetrating ";
-		r = r+name+"\nF:"+getModFlesh()+" A:"+getModArmor()+" S:"+getModShield()+" E:"+getModEnergy();
+		r = r+name;
+		return r;
+	}
+	
+	public String toString(){
+		String r = name+"\nF:"+getModFlesh()+" A:"+getModArmor()+" S:"+getModShield()+" E:"+getModEnergy();
 		return r;
 	}
 }
