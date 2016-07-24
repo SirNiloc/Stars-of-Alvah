@@ -1,6 +1,6 @@
-package soa.item.weapon;
+package soa.item;
 
-import soa.item.Item;
+import soa.item.slot.combat.ShipWeapon;
 import soa.item.weapon.damagetype.DamageType;
 
 public class Weapon extends Item{
@@ -9,7 +9,7 @@ public class Weapon extends Item{
 	private DamageType type;
 	private double damage = 0;
 	private double rate = 0;
-	private double speed = 0;
+	private double range = 0;
 	private int magSize = 0;
 	private int reloadTime = 0;
 	private int tier=0;
@@ -25,24 +25,31 @@ public class Weapon extends Item{
 
 	private void setMR(double m, double re) {
 		double points = m+re;
-		
-		m = (m/points)*(tier*10);
-		re = (m/tier)-(re/points);
-		
-		magSize = 0;
-		reloadTime = 0;
+		int mod = tier;
+		if(this instanceof ShipWeapon){
+			ShipWeapon w = (ShipWeapon) this;
+			mod+=w.getSlotCost();
+		}
+		m = (m/points)*(mod*10);
+		re = (m/mod)-(re/points);
+		magSize = (int) m+1;
+		reloadTime = (int) re;
 	}
 
 	private void setDRS(double d, double r, double s) {
 		double points = d+r+s;
-		
-		d = (d/points)*(tier*10);
-		r = (r/points)*(tier*10);
-		s = (s/points)*(tier*10);
+		int mod = tier;
+		if(this instanceof ShipWeapon){
+			ShipWeapon w = (ShipWeapon) this;
+			mod+=w.getSlotCost();
+		}
+		d = (d/points)*(mod*10);
+		r = (r/points)*(mod*10);
+		s = (s/points)*(mod*10);
 		
 		damage = Math.floor(d * 100) / 100;
 		rate = Math.floor(r * 100) / 100;
-		speed = Math.floor(s * 100) / 100;
+		range = Math.floor(s * 100) / 100;
 	}
 	
 	public double getDamage(){
@@ -54,8 +61,8 @@ public class Weapon extends Item{
 	public int getMagSize(){
 		return magSize;
 	}
-	public double getSpeed(){
-		return speed;
+	public double getRange(){
+		return range;
 	}
 	public double getRate(){
 		return rate;
@@ -67,14 +74,14 @@ public class Weapon extends Item{
 		return tier;
 	}
 	public String getName(){
-		return getTier()+" "+name;
+		return "T"+getTier()+" "+name;
 	}
 	
 	public String toString(){
 		String r = type.getName()+" "+getName()+":\n"+
 				"Damage: "+getDamage()+"\n"+
 				"Rate: "+getRate()+"\n"+
-				"Projectile peed: "+getSpeed()+"\n"+
+				"Range: "+getRange()+"\n"+
 				"Capacity: "+getMagSize()+"\n"+
 				"Reload: "+getReload()+"\n";
 		return r;

@@ -14,7 +14,4 @@ public interface Intelligent {
     
     int getPoints();
     void setPoints(int p);
-    
-   
-
 }

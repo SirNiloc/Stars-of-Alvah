@@ -8,6 +8,7 @@ import soa.item.material.raw.mineral.MineralMetal;
 import soa.item.material.raw.plant.PlantCraft;
 import soa.item.material.raw.plant.PlantFood;
 import soa.item.material.raw.plant.PlantMedical;
+import soa.item.slot.combat.ShipWeapon;
 import soa.item.weapon.damagetype.DamageType;
 import soa.item.weapon.damagetype.Energy;
 import soa.item.weapon.damagetype.Kinetic;
@@ -641,4 +642,25 @@ public class Generate {
 		return new DamageType(name, flesh, armor, shield, energy, randBoolWieght(50));
 	}
 	//Damage Type
+	//Ship Weapon
+	public static ShipWeapon shipWeapon(String name, DamageType type, int t, int slots){
+		int tier = t;
+		if(t < 1) tier = 1;
+		return new ShipWeapon(name, tier, type, randRangeDouble(1,100), randRangeDouble(1,100), randRangeDouble(1,100), randRangeInt(1,100), randRangeInt(1,100), slots);
+	}
+	public static ShipWeapon shipWeapon(String name, String damage, int t, int slots){
+		int tt = randRangeInt(0,6);
+		DamageType type;
+		if(tt == 0) type = damageShield(damage);
+		else if(tt == 1) type = damageArmor(damage);
+		else if(tt == 2) type = damageAura(damage);
+		else if(tt == 3) type = damageFlesh(damage);
+		else if(tt == 4) type = damageKinetic(damage);
+		else if(tt == 5) type = damageEnergy(damage);
+		else type = damageType(damage);
+
+		return shipWeapon(name, type, t, slots);
+		
+	}
+	//Ship Weapon
 }
